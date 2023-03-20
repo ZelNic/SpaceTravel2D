@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private int health = 5;
+    [SerializeField]private int health = 5;
     public GameObject gameObjectManager;
     private GameObjectManager _gom;
     private BoundsCheck boundsCheck;
     private Rigidbody2D rb;
     public float speed;
-    public bool signal;
+    public int countEnemyInList;
 
     public void Awake()
     {
@@ -17,18 +17,20 @@ public class Enemy : MonoBehaviour
         _gom = gameObjectManager.GetComponent<GameObjectManager>();
     }
 
+
+    
+
     private void FixedUpdate()
     {
         PositionCheck();
-        MoveEnemy();        
+        MoveEnemy();
     }
 
     private void PositionCheck()
     {
         if (boundsCheck != null && boundsCheck.offDown)
         {
-            health -= 200;
-            
+            DestroyEnemy();
         }
     }
 
@@ -44,18 +46,19 @@ public class Enemy : MonoBehaviour
         {
             Destroy(collision.gameObject);
             health--;
-            if(health <= 0)
+            if (health <= 0)
             {
-                _gom.UpdateCurrentCount();
+                countEnemyInList = GameObjectManager.count;
+                countEnemyInList--;
+                GameObjectManager.count = countEnemyInList;
+
                 Destroy(gameObject);
             }
         }
-       
     }
 
 
-
-    /*public void GetDamage()
+    public void GetDamage()
     {
         health=-4;
         if (health < 0)
@@ -66,8 +69,10 @@ public class Enemy : MonoBehaviour
     }
     public void DestroyEnemy()
     {
-        _gom.UpdateCurrentCount();        
+        countEnemyInList = GameObjectManager.count;
+        countEnemyInList--;
+        GameObjectManager.count = countEnemyInList;
         Destroy(gameObject);
-    }*/
+    }
 
 }
