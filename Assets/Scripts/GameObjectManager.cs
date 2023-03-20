@@ -11,8 +11,7 @@ public class GameObjectManager : MonoBehaviour
     public static int count;
 
     private void Update()
-    {
-        print(count + "GOM");  
+    {        
         if (count < maxCountEnemyOnScreen && timeCreate < Time.time)
         {            
             SpawnEnemy();            
@@ -21,17 +20,24 @@ public class GameObjectManager : MonoBehaviour
     public void SpawnEnemy()
     {
         int indInArray = Random.Range(0, enemy.Length);
-        enemySpawner = Instantiate(enemy[indInArray]);       
-        count++;        
+        enemySpawner = Instantiate(enemy[indInArray]);
+        if (enemySpawner.tag == "BigEnemy")
+        {
+            count = +5;
+        }
+        else
+        {
+            count++;
+        }
+              
         timeCreate = Time.time + plusTime;        
         Transform posEnemy = enemySpawner.GetComponent<Transform>();
-        posEnemy.transform.position = new Vector3(Random.Range(-10, 10), Random.Range(25, 30), 0);
+        posEnemy.transform.position = new Vector3(Random.Range(-10, 10), Random.Range(25, 35), 0);
     }
 
 
     public void UpdateCurrentCount()
-    {
-        print("Good");
+    {        
         count--;        
     }
 

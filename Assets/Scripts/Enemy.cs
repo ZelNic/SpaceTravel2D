@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]private int health = 5;
+    [SerializeField] private int health = 5;
     public GameObject gameObjectManager;
     private GameObjectManager _gom;
     private BoundsCheck boundsCheck;
     private Rigidbody2D rb;
     public float speed;
-    public int countEnemyInList;
+    private int countEnemyInList;
 
     public void Awake()
     {
@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     }
 
 
-    
+
 
     private void FixedUpdate()
     {
@@ -60,18 +60,21 @@ public class Enemy : MonoBehaviour
 
     public void GetDamage()
     {
-        health=-4;
+        health = -4;
         if (health < 0)
         {
             DestroyEnemy();
         }
-        
+
     }
-    public void DestroyEnemy()
+    public virtual void DestroyEnemy()
     {
+
         countEnemyInList = GameObjectManager.count;
         countEnemyInList--;
         GameObjectManager.count = countEnemyInList;
+
+
         Destroy(gameObject);
     }
 
