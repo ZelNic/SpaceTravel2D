@@ -42,6 +42,7 @@ public class Enemy : MonoBehaviour
         GameObject other = collision.gameObject;
         if (collision.gameObject.tag == "ProjectileHero")
         {
+            Destroy(collision.gameObject);
             health--;
             if(health <= 0)
             {
