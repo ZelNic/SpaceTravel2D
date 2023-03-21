@@ -1,4 +1,3 @@
-using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,12 +5,13 @@ public class Score : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     private PlayerController _pc;
-    
+
     [SerializeField] private Text textScore;
-    private float _score;
+    private int _score;
 
     private void Awake()
     {
+        _score = 0;
         _pc = player.GetComponent<PlayerController>();
         textScore.text = "0";
 
@@ -19,13 +19,24 @@ public class Score : MonoBehaviour
 
     public void Update()
     {
-        textScore.text = _score.ToString();
-        print(_score);
+        textScore.text = score.ToString();
+
+    }
+
+    public int score
+    {
+        get { return _score; }
+        set 
+        {
+           _score = value;           
+        }
     }
 
     public void UpdateScore(int value)
     {
-        _score += value;        
+        
+        score += value;
+        print("Hi");
     }
 
 

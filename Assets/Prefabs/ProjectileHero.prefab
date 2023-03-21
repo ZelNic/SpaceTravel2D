@@ -124,7 +124,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!114 &1349603350286144134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +138,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  gameObjectManager: {fileID: 4620474011627906804, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
+  goScore: {fileID: 2418562503317077798, guid: 9d9e603ba1f25a544845bb344936c817, type: 3}
+  _score: {fileID: 0}
 --- !u!114 &6491594363319890378
 MonoBehaviour:
   m_ObjectHideFlags: 0

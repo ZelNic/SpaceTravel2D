@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private int health = 5;
+    
     public GameObject gameObjectManager;
     private GameObjectManager _gom;
     private BoundsCheck boundsCheck;
@@ -18,9 +18,6 @@ public class Enemy : MonoBehaviour
         _gom = gameObjectManager.GetComponent<GameObjectManager>();
         _score = goScore.GetComponent<Score>();
     }
-
-
-
 
     private void FixedUpdate()
     {
@@ -41,32 +38,20 @@ public class Enemy : MonoBehaviour
         rb.AddForce(new Vector2(0, -Mathf.Abs(speed * Time.deltaTime)));
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    [SerializeField] private int _health = 5;
+    public int health
     {
-        GameObject other = collision.gameObject;
-        if (collision.gameObject.tag == "ProjectileHero")
-        {
-            Destroy(collision.gameObject);
-            health--;
-            if (health <= 0)
-            {
-                DestroyEnemy();
-            }
-        }
+        get { return _health; }
+        set { _health = value;}
     }
 
-
-    public virtual void GetDamage()
+    public void GetDamage(int value)
     {
-        health = -4;
-        if (health < 0)
-        {
-            DestroyEnemy();
-        }
 
     }
+
     public virtual void DestroyEnemy()
-    {        
+    {
         countEnemyInList = GameObjectManager.count;
         countEnemyInList--;
         GameObjectManager.count = countEnemyInList;

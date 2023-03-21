@@ -219,6 +219,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 630521059909310978, guid: bf9d070a8ecd9ed4b892f8e038640033, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 5244267759477918283, guid: 363f258ab5aa70d45b73da297a65e357, type: 3}
+    - target: {fileID: 630521059909310978, guid: bf9d070a8ecd9ed4b892f8e038640033, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 159815689}
@@ -438,11 +442,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: enemy.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: maxCountBigEnemy
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: plusTimeForEnemy
