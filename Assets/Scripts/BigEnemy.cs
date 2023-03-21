@@ -11,7 +11,9 @@ public class BigEnemy : MonoBehaviour
     private BoundsCheck boundsCheck;
     private Rigidbody2D _rb;
     public static int healthBigEnemy;
-
+    private Vector2 halfCamHeight = new Vector2(0,15f);
+    [SerializeField] private GameObject goScore;
+    private Score _score;
 
     private void Awake()
     {
@@ -19,6 +21,8 @@ public class BigEnemy : MonoBehaviour
         CreateBigEnemy();
         boundsCheck = GetComponent<BoundsCheck>();
         _rb = GetComponent<Rigidbody2D>();
+        _score = goScore.GetComponent<Score>();
+        
     }
 
     public void CreateBigEnemy()
@@ -34,7 +38,7 @@ public class BigEnemy : MonoBehaviour
         PositionCheck();
         MoveEnemy();
         UpdateHealthBigEnemy();
-        print(healthBigEnemy);
+        
     }
     private void PositionCheck()
     {
@@ -46,6 +50,14 @@ public class BigEnemy : MonoBehaviour
     public void MoveEnemy()
     {
         _rb.position -= new Vector2(0, speedBigEnemy * Time.deltaTime);
+
+        if (_rb.position.y == halfCamHeight.y)
+        {
+            print("iam here");
+        }
+       
+
+
     }
     public void UpdateHealthBigEnemy()
     {
@@ -55,7 +67,7 @@ public class BigEnemy : MonoBehaviour
         }
     }
     public void DestroyEnemy()
-    {
+    {        
         int bEcount = GameObjectManager.countBigEnemy;
         bEcount--;
         GameObjectManager.countBigEnemy = bEcount;

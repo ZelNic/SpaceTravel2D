@@ -114,5 +114,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372b16f33f4ed6c4ab2188bcdca3c8d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
   bigEnemy: {fileID: 7805503782268883601, guid: 0fcbb8104d03d5e49a7b227f368c3e22, type: 3}
+  goScore: {fileID: 2418562503317077798, guid: 9d9e603ba1f25a544845bb344936c817, type: 3}

@@ -11,13 +11,15 @@ public class PlayerController : MonoBehaviour
     public GameObject pointCreateProjectile;
     public float timeCreate;
     public float rateOfFire;
-
+    [SerializeField] private GameObject goScore;
+    private Score _score;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _rb.position = Vector2.zero;
         _gom = gOM.GetComponent<GameObjectManager>();
+        _score = goScore.GetComponent<Score>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,10 +30,12 @@ public class PlayerController : MonoBehaviour
             _gom.UpdateCurrentCount();
             Destroy(collision.gameObject);
             health--;
+            _score.UpdateScore(5);
         }
         if (other.tag == "PartBigEnemy")
         {
             health--;
+            _score.UpdateScore(10);
         }
     }
     

@@ -144,6 +144,7 @@ MonoBehaviour:
   part: []
   speedBigEnemy: 5
   gameObjectManager: {fileID: 4620474011627906804, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
+  goScore: {fileID: 2418562503317077798, guid: 9d9e603ba1f25a544845bb344936c817, type: 3}
 --- !u!114 &-2001656506581193875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa05251cd3d34a6428215189c34f9d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 5
+  radius: -5
   keepOnScreen: 0
   camWidth: 0
   camHeight: 0

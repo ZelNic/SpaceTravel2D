@@ -9,12 +9,14 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     public float speed;
     private int countEnemyInList;
-
+    [SerializeField] private GameObject goScore;
+    private Score _score;
     public void Awake()
     {
         boundsCheck = GetComponent<BoundsCheck>();
         rb = GetComponent<Rigidbody2D>();
         _gom = gameObjectManager.GetComponent<GameObjectManager>();
+        _score = goScore.GetComponent<Score>();
     }
 
 
@@ -48,11 +50,7 @@ public class Enemy : MonoBehaviour
             health--;
             if (health <= 0)
             {
-                countEnemyInList = GameObjectManager.count;
-                countEnemyInList--;
-                GameObjectManager.count = countEnemyInList;
-
-                Destroy(gameObject);
+                DestroyEnemy();
             }
         }
     }
@@ -68,8 +66,7 @@ public class Enemy : MonoBehaviour
 
     }
     public virtual void DestroyEnemy()
-    {
-
+    {        
         countEnemyInList = GameObjectManager.count;
         countEnemyInList--;
         GameObjectManager.count = countEnemyInList;
