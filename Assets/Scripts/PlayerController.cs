@@ -29,16 +29,15 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             health--;
         }
+        if (other.tag == "PartBigEnemy")
+        {
+            health--;
+        }
     }
-
-    private void Update()
-    {
-        GetDamage();
-
-    }
-
+    
     private void FixedUpdate()
     {
+        GetDamage();
         MovePlayer();
         if (timeCreate < Time.time)
         {
@@ -72,7 +71,7 @@ public class PlayerController : MonoBehaviour
     private void CreateProjectileHero()
     {
         timeCreate = Time.time + rateOfFire;
-        GameObject proje = Instantiate(projectileHero);
+        GameObject proje = Instantiate(projectileHero, pointCreateProjectile.transform);
         proje.transform.position = pointCreateProjectile.transform.position;
 
     }

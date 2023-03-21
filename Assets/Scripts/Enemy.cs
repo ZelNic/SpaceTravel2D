@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
     }
 
 
-    public void GetDamage()
+    public virtual void GetDamage()
     {
         health = -4;
         if (health < 0)
@@ -73,8 +73,6 @@ public class Enemy : MonoBehaviour
         countEnemyInList = GameObjectManager.count;
         countEnemyInList--;
         GameObjectManager.count = countEnemyInList;
-
-
         Destroy(gameObject);
     }
 
