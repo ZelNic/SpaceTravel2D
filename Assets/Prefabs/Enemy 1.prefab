@@ -160,4 +160,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   gameObjectManager: {fileID: 4620474011627906804, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-  speed: 10
+  speed: 20

@@ -255,7 +255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: enemy.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: maxCountBigEnemy
@@ -263,7 +263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: plusTimeForEnemy
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: currentCountEnemy
@@ -280,14 +280,22 @@ PrefabInstance:
     - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: enemy.Array.data[1]
       value: 
-      objectReference: {fileID: 8126083887628908272, guid: 363f258ab5aa70d45b73da297a65e357, type: 3}
+      objectReference: {fileID: 2631322876825150010, guid: 2e223507e08393748b3bbf4d2e0b5b2c, type: 3}
+    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
+      propertyPath: enemy.Array.data[2]
+      value: 
+      objectReference: {fileID: 2631322876825150010, guid: 2e223507e08393748b3bbf4d2e0b5b2c, type: 3}
+    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
+      propertyPath: enemy.Array.data[3]
+      value: 
+      objectReference: {fileID: 2631322876825150010, guid: 2e223507e08393748b3bbf4d2e0b5b2c, type: 3}
     - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: plusTimeForBigEnemy
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: maxCountEnemyOnScreen
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: bigEnemy.Array.data[0]

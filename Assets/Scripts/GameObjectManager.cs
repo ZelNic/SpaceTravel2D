@@ -7,6 +7,7 @@ public class GameObjectManager : MonoBehaviour
     [SerializeField] private int maxCountEnemyOnScreen;
     [SerializeField] private int maxCountBigEnemy;
     public float timeCreate;
+    public float timeCreateForBigEnemy;
     public float plusTimeForEnemy;
     public float plusTimeForBigEnemy;
     private GameObject enemySpawner;    
@@ -15,12 +16,13 @@ public class GameObjectManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         if (count < maxCountEnemyOnScreen && timeCreate < Time.time)
         {
             SpawnEnemy();
         }
        
-        if (countBigEnemy < maxCountBigEnemy && timeCreate < Time.time)
+        if (countBigEnemy < maxCountBigEnemy && timeCreateForBigEnemy < Time.time)
         {
             SpawnBigEnemy();
         }
@@ -41,7 +43,7 @@ public class GameObjectManager : MonoBehaviour
         countBigEnemy++;
         Transform posEnemy = enemySpawner.GetComponent<Transform>();
         posEnemy.transform.position = new Vector3(0, 25, 0);
-        timeCreate = Time.time + plusTimeForBigEnemy;
+        timeCreateForBigEnemy = Time.time + plusTimeForBigEnemy;
     }
 
 
