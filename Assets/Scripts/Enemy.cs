@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
     public GameObject gameObjectManager;
     private GameObjectManager _gom;
     private BoundsCheck boundsCheck;
-    private Rigidbody2D rb;
+    private Rigidbody2D _rb;
     public float speed;
     private int countEnemyInList;
     [SerializeField] private GameObject goScore;
@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     public void Awake()
     {
         boundsCheck = GetComponent<BoundsCheck>();
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
         _gom = gameObjectManager.GetComponent<GameObjectManager>();
         _score = goScore.GetComponent<Score>();
     }
@@ -35,7 +35,8 @@ public class Enemy : MonoBehaviour
 
     public virtual void MoveEnemy()
     {
-        rb.AddForce(new Vector2(0, -Mathf.Abs(speed * Time.deltaTime)));
+        //rb.AddForce(new Vector2(0, -Mathf.Abs(speed * Time.deltaTime)));
+        _rb.position -= new Vector2(0, speed * Time.deltaTime);
     }
 
     [SerializeField] private int _health = 5;

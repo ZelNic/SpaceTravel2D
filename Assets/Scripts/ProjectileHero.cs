@@ -42,7 +42,7 @@ public class ProjectileHero : MonoBehaviour
         {
             Enemy _enemy = other.GetComponent<Enemy>();
             _enemy.health -= 1;
-            if (_enemy.health < 0)
+            if (_enemy.health == 0)
             {
                 _enemy.DestroyEnemy();
                 _score.UpdateScore(5);                
@@ -54,7 +54,7 @@ public class ProjectileHero : MonoBehaviour
         {
             PartsBigEnemy _pbe = other.GetComponent<PartsBigEnemy>();
             _pbe.health -= 1;
-            if (_pbe.health < 0)
+            if (_pbe.health == 0)
             {
                 _pbe.DestroyPart();
                 _score.UpdateScore(5);

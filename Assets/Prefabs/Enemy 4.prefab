@@ -137,10 +137,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa963f2f357db047ab19e8a5e55fe3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
   gameObjectManager: {fileID: 4620474011627906804, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-  speed: 20
+  speed: 50
   goScore: {fileID: 2418562503317077798, guid: 9d9e603ba1f25a544845bb344936c817, type: 3}
+  _health: 2
 --- !u!50 &-8332123509383165699
 Rigidbody2D:
   serializedVersion: 4
