@@ -446,7 +446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: maxCountBigEnemy
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: plusTimeForEnemy
@@ -482,7 +482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: maxCountEnemyOnScreen
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: bigEnemy.Array.data[0]

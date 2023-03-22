@@ -44,11 +44,7 @@ public class Enemy : MonoBehaviour
         get { return _health; }
         set { _health = value;}
     }
-
-    public void GetDamage(int value)
-    {
-
-    }
+        
 
     public virtual void DestroyEnemy()
     {

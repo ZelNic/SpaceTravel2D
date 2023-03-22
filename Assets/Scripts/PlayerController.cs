@@ -17,8 +17,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _rb.position = Vector2.zero;
-        _gom = gOM.GetComponent<GameObjectManager>();
+        _rb.position = Vector2.zero;        
         _score = goScore.GetComponent<Score>();
     }
 
@@ -27,15 +26,18 @@ public class PlayerController : MonoBehaviour
         GameObject other = collision.gameObject;
         if (other.tag == "Enemy")
         {
-            _gom.UpdateCurrentCount();
-            Destroy(collision.gameObject);
             health--;
-            _score.UpdateScore(5);
+            Enemy _enemy = other.GetComponent<Enemy>();                    
+            _score.UpdateScore(10);
+            _enemy.DestroyEnemy();
+
         }
         if (other.tag == "PartBigEnemy")
         {
             health--;
+            PartsBigEnemy _pbe = other.GetComponent<PartsBigEnemy>();
             _score.UpdateScore(10);
+            _pbe.DestroyPart();
         }
     }
     

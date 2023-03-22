@@ -7,7 +7,7 @@ public class Score : MonoBehaviour
     private PlayerController _pc;
 
     [SerializeField] private Text textScore;
-    private int _score;
+    private static int _score;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class Score : MonoBehaviour
 
     }
 
-    public int score
+    public static int score
     {
         get { return _score; }
         set 
@@ -33,10 +33,8 @@ public class Score : MonoBehaviour
     }
 
     public void UpdateScore(int value)
-    {
-        
+    {        
         score += value;
-        print("Hi");
     }
 
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PartsBigEnemy : MonoBehaviour
 {
-    private int health;
+    private int _health;
     [SerializeField] private GameObject bigEnemy;
     [SerializeField] private GameObject goScore;
     private Score _score;
@@ -11,25 +11,16 @@ public class PartsBigEnemy : MonoBehaviour
         _score = goScore.GetComponent<Score>();
         health = 2;
     }
+        
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {        
-        if (collision.gameObject.tag == "Hero")
-        {
-            DestroyPart();            
-        }
-        if (collision.gameObject.tag == "ProjectileHero")
-        {            
-            health--;
-            Destroy(collision.gameObject);
-            if (health == 0)
-            {                
-                DestroyPart();                
-            }
-        }
+    public int health
+    {
+        get { return _health; }
+        set { _health = value; }
     }
 
-    private void DestroyPart()
+
+    public void DestroyPart()
     {
         int healthBE = BigEnemy.healthBigEnemy;        
         healthBE--;
