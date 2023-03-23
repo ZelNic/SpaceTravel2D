@@ -23,8 +23,7 @@ public class BigEnemy : MonoBehaviour
 
     private void Start()
     {
-        _halfHeight.y = _boundsCheck.camHeight - 10f;
-        print(_halfHeight);
+        _halfHeight.y = _boundsCheck.camHeight - 10f;        
     }
 
     public void CreateBigEnemy()

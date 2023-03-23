@@ -5,17 +5,17 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Set in Inspector")]
     [SerializeField] private int _maxHealth;
-    private int _currentHealth;
+    [SerializeField] private GameObject _goScore;
+    [SerializeField] private Slider _slider;   
     public GameObject gameObjectManager;
     public GameObject projectileHero;
     public GameObject pointCreateProjectile;
     public float rateOfFire;
     private Rigidbody2D _rb;
-    private float _timeCreate;
-    private GameObject _goScore;
+    private float _timeCreate;    
     private Score _score;
-    private Slider _slider;
     private HealthBar _healthBar;
+    private int _currentHealth;
     private TakingDamage _takingDamage;
 
     private void Awake()
