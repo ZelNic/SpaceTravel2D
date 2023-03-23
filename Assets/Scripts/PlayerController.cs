@@ -6,38 +6,33 @@ public class PlayerController : MonoBehaviour
     [Header("Set in Inspector")]
     [SerializeField] private int _maxHealth;
     private int _currentHealth;
-    private Rigidbody2D _rb;
-    public GameObject gOM;
-    private GameObjectManager _gom;
+    public GameObject gameObjectManager;
     public GameObject projectileHero;
     public GameObject pointCreateProjectile;
-    public float timeCreate;
     public float rateOfFire;
-    [SerializeField] private GameObject goScore;
+    private Rigidbody2D _rb;
+    private float _timeCreate;
+    private GameObject _goScore;
     private Score _score;
-    [SerializeField] private Slider _slider;
+    private Slider _slider;
     private HealthBar _healthBar;
     private TakingDamage _takingDamage;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _rb.position = Vector2.zero;        
-        _score = goScore.GetComponent<Score>();
+        _rb.position = Vector2.zero;
+        _score = _goScore.GetComponent<Score>();
         _currentHealth = _maxHealth;
-        _healthBar = _slider.GetComponent<HealthBar>();    
+        _healthBar = _slider.GetComponent<HealthBar>();
         _takingDamage = GetComponent<TakingDamage>();
     }
 
-    
-
     public int health
     {
-        get { return _currentHealth;  }
+        get { return _currentHealth; }
         set { _currentHealth = value; }
     }
-
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -46,10 +41,10 @@ public class PlayerController : MonoBehaviour
         {
             health--;
             _takingDamage.ChangeColorTakingDamage();
-            Enemy _enemy = other.GetComponent<Enemy>();                    
+            Enemy _enemy = other.GetComponent<Enemy>();
             _score.UpdateScore(10);
             _enemy.DestroyEnemy();
-            
+
         }
         if (other.tag == "PartBigEnemy")
         {
@@ -60,13 +55,13 @@ public class PlayerController : MonoBehaviour
             _pbe.DestroyPart();
         }
     }
-    
+
     private void FixedUpdate()
     {
         GetDamage();
         UpdateHealthBar();
         MovePlayer();
-        if (timeCreate < Time.time)
+        if (_timeCreate < Time.time)
         {
             CreateProjectileHero();
         }
@@ -102,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
     private void CreateProjectileHero()
     {
-        timeCreate = Time.time + rateOfFire;
+        _timeCreate = Time.time + rateOfFire;
         GameObject proje = Instantiate(projectileHero, pointCreateProjectile.transform);
         proje.transform.position = pointCreateProjectile.transform.position;
 
