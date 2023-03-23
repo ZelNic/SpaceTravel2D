@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Set in Inspector")]
-    [SerializeField] private float health;
+    [SerializeField] private int _maxHealth;
+    private int _currentHealth;
     private Rigidbody2D _rb;
     public GameObject gOM;
     private GameObjectManager _gom;
@@ -13,13 +15,27 @@ public class PlayerController : MonoBehaviour
     public float rateOfFire;
     [SerializeField] private GameObject goScore;
     private Score _score;
+    [SerializeField] private Slider _slider;
+    private HealthBar _healthBar;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _rb.position = Vector2.zero;        
         _score = goScore.GetComponent<Score>();
+        _currentHealth = _maxHealth;
+        _healthBar = _slider.GetComponent<HealthBar>();
     }
+
+    
+
+    public int health
+    {
+        get { return _currentHealth;  }
+        set { _currentHealth = value; }
+    }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -44,6 +60,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         GetDamage();
+        UpdateHealthBar();
         MovePlayer();
         if (timeCreate < Time.time)
         {
@@ -72,6 +89,10 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    private void UpdateHealthBar()
+    {
+        _healthBar.UpdateHealthBar(_maxHealth, health);
     }
 
     private void CreateProjectileHero()
