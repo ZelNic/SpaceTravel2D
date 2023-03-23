@@ -14,6 +14,11 @@ public class GameObjectManager : MonoBehaviour
     public static int count;
     public static int countBigEnemy;
 
+    private void Awake()
+    {
+        Application.targetFrameRate = 120;
+    }
+
     private void FixedUpdate()
     {
         
