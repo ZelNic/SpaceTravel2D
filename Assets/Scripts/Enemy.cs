@@ -2,20 +2,18 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    
-    public GameObject gameObjectManager;
-    private GameObjectManager _gom;
-    private BoundsCheck boundsCheck;
+    [SerializeField] private int _health = 5;
+    private BoundsCheck _boundsCheck;
     private Rigidbody2D _rb;
     public float speed;
-    private int countEnemyInList;
+    private TakingDamage _takingDamage;
     [SerializeField] private GameObject goScore;
-    private Score _score;
+    public Score _score;
     public void Awake()
     {
-        boundsCheck = GetComponent<BoundsCheck>();
+        _boundsCheck = GetComponent<BoundsCheck>();
         _rb = GetComponent<Rigidbody2D>();
-        _gom = gameObjectManager.GetComponent<GameObjectManager>();
+        _takingDamage = GetComponent<TakingDamage>();
         _score = goScore.GetComponent<Score>();
     }
 
@@ -27,7 +25,7 @@ public class Enemy : MonoBehaviour
 
     private void PositionCheck()
     {
-        if (boundsCheck != null && boundsCheck.offDown)
+        if (_boundsCheck != null && _boundsCheck.offDown)
         {
             DestroyEnemy();
         }
@@ -35,23 +33,29 @@ public class Enemy : MonoBehaviour
 
     public virtual void MoveEnemy()
     {
-        //rb.AddForce(new Vector2(0, -Mathf.Abs(speed * Time.deltaTime)));
         _rb.position -= new Vector2(0, speed * Time.deltaTime);
     }
 
-    [SerializeField] private int _health = 5;
+
     public int health
     {
         get { return _health; }
-        set { _health = value;}
+        set
+        {
+            _health = value;
+            _takingDamage.ChangeColorTakingDamage();
+            if (_health < 0)
+            {
+                DestroyEnemy();
+                _score.UpdateScore(5);
+            }
+        }
     }
-        
+
 
     public virtual void DestroyEnemy()
     {
-        countEnemyInList = GameObjectManager.count;
-        countEnemyInList--;
-        GameObjectManager.count = countEnemyInList;
+        GameObjectManager.countEnemy--;
         Destroy(gameObject);
     }
 

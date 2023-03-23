@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BigEnemy : MonoBehaviour
@@ -6,23 +7,24 @@ public class BigEnemy : MonoBehaviour
     [SerializeField] private GameObject prefabs;
     [SerializeField] private Transform[] transformsPointSpawn;
     [SerializeField] public List<GameObject> part;
-    [SerializeField] private float speedBigEnemy;
-    [SerializeField] private GameObject gameObjectManager;
-    private BoundsCheck boundsCheck;
+    [SerializeField] private float speedBigEnemy;    
+    private BoundsCheck _boundsCheck;
     private Rigidbody2D _rb;
     public static int healthBigEnemy;
-    private Vector2 halfCamHeight = new Vector2(0,15f);
-    [SerializeField] private GameObject goScore;
-    private Score _score;
+    private Vector2 _halfHeight;
 
     private void Awake()
     {
         healthBigEnemy = 5;
         CreateBigEnemy();
-        boundsCheck = GetComponent<BoundsCheck>();
-        _rb = GetComponent<Rigidbody2D>();
-        _score = goScore.GetComponent<Score>();
-        
+        _boundsCheck = GetComponent<BoundsCheck>();
+        _rb = GetComponent<Rigidbody2D>();        
+    }
+
+    private void Start()
+    {
+        _halfHeight.y = _boundsCheck.camHeight - 10f;
+        print(_halfHeight);
     }
 
     public void CreateBigEnemy()
@@ -38,25 +40,32 @@ public class BigEnemy : MonoBehaviour
         PositionCheck();
         MoveEnemy();
         UpdateHealthBigEnemy();
-        
+
     }
     private void PositionCheck()
     {
-        if (boundsCheck.offDown)
+        if (_boundsCheck.offDown)
         {
             DestroyEnemy();
         }
     }
     public void MoveEnemy()
     {
-        _rb.position -= new Vector2(0, speedBigEnemy * Time.deltaTime);
-
-        if (_rb.position.y == halfCamHeight.y)
+        if (_rb.position.y > _halfHeight.y)
         {
-            print("iam here");
+            _rb.position -= new Vector2(0, speedBigEnemy * Time.deltaTime);
         }
-       
-
+        else _rb.position += new Vector2(speedBigEnemy * Time.deltaTime, 0);              
+        
+        
+        if (_boundsCheck.offRight)
+        {
+            speedBigEnemy = -Mathf.Abs(speedBigEnemy);
+        }
+        if (_boundsCheck.offLeft)
+        {
+            speedBigEnemy = Mathf.Abs(speedBigEnemy);
+        }
 
     }
     public void UpdateHealthBigEnemy()
@@ -68,9 +77,7 @@ public class BigEnemy : MonoBehaviour
     }
     public void DestroyEnemy()
     {        
-        int bEcount = GameObjectManager.countBigEnemy;
-        bEcount--;
-        GameObjectManager.countBigEnemy = bEcount;
+        GameObjectManager.countBigEnemy--;
         Destroy(gameObject);
     }
 

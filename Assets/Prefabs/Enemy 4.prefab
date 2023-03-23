@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6419634028198889516}
   - component: {fileID: 6419634028198889519}
   - component: {fileID: -8332123509383165699}
+  - component: {fileID: 2503501873218643698}
   m_Layer: 12
   m_Name: Enemy 4
   m_TagString: Enemy
@@ -137,10 +138,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa963f2f357db047ab19e8a5e55fe3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 2
   gameObjectManager: {fileID: 4620474011627906804, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
   speed: 50
   goScore: {fileID: 2418562503317077798, guid: 9d9e603ba1f25a544845bb344936c817, type: 3}
-  _health: 2
+  _score: {fileID: 0}
 --- !u!50 &-8332123509383165699
 Rigidbody2D:
   serializedVersion: 4
@@ -162,3 +164,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!114 &2503501873218643698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6419634028198889504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc517e1b94acf24aa75118accacb525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

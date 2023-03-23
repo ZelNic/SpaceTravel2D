@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Score _score;
     [SerializeField] private Slider _slider;
     private HealthBar _healthBar;
+    private TakingDamage _takingDamage;
 
     private void Awake()
     {
@@ -24,7 +25,8 @@ public class PlayerController : MonoBehaviour
         _rb.position = Vector2.zero;        
         _score = goScore.GetComponent<Score>();
         _currentHealth = _maxHealth;
-        _healthBar = _slider.GetComponent<HealthBar>();
+        _healthBar = _slider.GetComponent<HealthBar>();    
+        _takingDamage = GetComponent<TakingDamage>();
     }
 
     
@@ -43,14 +45,16 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Enemy")
         {
             health--;
+            _takingDamage.ChangeColorTakingDamage();
             Enemy _enemy = other.GetComponent<Enemy>();                    
             _score.UpdateScore(10);
             _enemy.DestroyEnemy();
-
+            
         }
         if (other.tag == "PartBigEnemy")
         {
             health--;
+            _takingDamage.ChangeColorTakingDamage();
             PartsBigEnemy _pbe = other.GetComponent<PartsBigEnemy>();
             _score.UpdateScore(10);
             _pbe.DestroyPart();
@@ -88,6 +92,7 @@ public class PlayerController : MonoBehaviour
         if (health == 0)
         {
             Destroy(gameObject);
+            GameManager.Restart();
         }
     }
     private void UpdateHealthBar()

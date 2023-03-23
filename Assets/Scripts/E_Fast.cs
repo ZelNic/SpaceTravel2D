@@ -2,26 +2,24 @@ using UnityEngine;
 
 public class E_Fast : Enemy
 {
-    private Vector2 startPos;
-    private Vector2 currentPos;
-    private Vector2 endPos;
-    private Rigidbody2D _rb;
-    private BoundsCheck boundsCheckE;
+    private Vector2 _startPos;    
+    private Vector2 _endPos;
+    private Rigidbody2D _rbe;
+    private BoundsCheck _boundsCheckE;
     public float speedE;
 
     public void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
-        boundsCheckE = GetComponent<BoundsCheck>();
-        startPos = _rb.position;
-        currentPos = startPos;
-        endPos = new Vector2(Random.Range(-boundsCheckE.camWidth, boundsCheckE.camWidth), -boundsCheckE.camHeight + 3f);
+        _rbe = GetComponent<Rigidbody2D>();
+        _boundsCheckE = GetComponent<BoundsCheck>();
+        _startPos = _rbe.position;       
+        _endPos = new Vector2(Random.Range(-_boundsCheckE.camWidth, _boundsCheckE.camWidth), -_boundsCheckE.camHeight + 3f);
 
     }
 
     private void FixedUpdate()
     {
-        if (boundsCheckE.offLeft || boundsCheckE.offDown || boundsCheckE.offRight)
+        if (_boundsCheckE.offLeft || _boundsCheckE.offDown || _boundsCheckE.offRight)
         {
             DestroyEnemy();
         }
@@ -30,7 +28,7 @@ public class E_Fast : Enemy
 
     public override void MoveEnemy()
     {
-        _rb.position += Vector2.Lerp(startPos, endPos, speedE) * Time.deltaTime;
+        _rbe.position += Vector2.Lerp(_startPos, _endPos, speedE) * Time.deltaTime;
     }
 
 }

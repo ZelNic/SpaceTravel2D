@@ -4,14 +4,15 @@ public class GameObjectManager : MonoBehaviour
 {
     public GameObject[] enemy;
     public GameObject[] bigEnemy;
-    [SerializeField] private int maxCountEnemyOnScreen;
-    [SerializeField] private int maxCountBigEnemy;
-    public float timeCreate;
-    public float timeCreateForBigEnemy;
+    [SerializeField] private int _maxCountEnemyOnScreen;
+    [SerializeField] private int _maxCountBigEnemy;
+    [SerializeField] private float startCreateEnemys;
+    private float _timeCreate;
+    private float _timeCreateForBigEnemy;
+    private GameObject _enemySpawner;
     public float plusTimeForEnemy;
-    public float plusTimeForBigEnemy;
-    private GameObject enemySpawner;    
-    public static int count;
+    public float plusTimeForBigEnemy;    
+    public static int countEnemy;
     public static int countBigEnemy;
 
     private void Awake()
@@ -22,12 +23,12 @@ public class GameObjectManager : MonoBehaviour
     private void FixedUpdate()
     {
         
-        if (count < maxCountEnemyOnScreen && timeCreate < Time.time)
+        if (countEnemy < _maxCountEnemyOnScreen && _timeCreate < Time.time && startCreateEnemys < Time.time)
         {
             SpawnEnemy();
         }
        
-        if (countBigEnemy < maxCountBigEnemy && timeCreateForBigEnemy < Time.time)
+        if (countBigEnemy < _maxCountBigEnemy && _timeCreateForBigEnemy < Time.time && startCreateEnemys < Time.time)
         {
             SpawnBigEnemy();
         }
@@ -35,27 +36,22 @@ public class GameObjectManager : MonoBehaviour
     public void SpawnEnemy()
     {
         int indInArray = Random.Range(0, enemy.Length);
-        enemySpawner = Instantiate(enemy[indInArray]);
-        count++;
-        Transform posEnemy = enemySpawner.GetComponent<Transform>();
+        _enemySpawner = Instantiate(enemy[indInArray]);
+        countEnemy++;
+        Transform posEnemy = _enemySpawner.GetComponent<Transform>();
         posEnemy.transform.position = new Vector3(Random.Range(-10, 10), Random.Range(25, 35), 0);
-        timeCreate = Time.time + plusTimeForEnemy;
+        _timeCreate = Time.time + plusTimeForEnemy;
     }
     public void SpawnBigEnemy()
     {
         int indInArray = Random.Range(0, bigEnemy.Length);
-        enemySpawner = Instantiate(bigEnemy[indInArray]);
+        _enemySpawner = Instantiate(bigEnemy[indInArray]);
         countBigEnemy++;
-        Transform posEnemy = enemySpawner.GetComponent<Transform>();
+        Transform posEnemy = _enemySpawner.GetComponent<Transform>();
         posEnemy.transform.position = new Vector3(0, 25, 0);
-        timeCreateForBigEnemy = Time.time + plusTimeForBigEnemy;
+        _timeCreateForBigEnemy = Time.time + plusTimeForBigEnemy;
     }
-
-
-    public void UpdateCurrentCount()
-    {
-        count--;
-    }
+   
 
 
 
