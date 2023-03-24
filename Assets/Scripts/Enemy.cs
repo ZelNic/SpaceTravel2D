@@ -9,6 +9,9 @@ public class Enemy : MonoBehaviour
     private TakingDamage _takingDamage;
     [SerializeField] private GameObject goScore;
     public Score _score;
+    public bool rotationEnemy;
+    public float speedRotation;
+
     public void Awake()
     {
         _boundsCheck = GetComponent<BoundsCheck>();
@@ -34,6 +37,11 @@ public class Enemy : MonoBehaviour
     public virtual void MoveEnemy()
     {
         _rb.position -= new Vector2(0, speed * Time.deltaTime);
+
+        if(rotationEnemy == true)
+        {
+            transform.Rotate(Vector3.forward, speedRotation * Time.deltaTime, Space.Self);
+        }
     }
 
 
@@ -44,7 +52,7 @@ public class Enemy : MonoBehaviour
         {
             _health = value;
             _takingDamage.ChangeColorTakingDamage();
-            if (_health < 0)
+            if (_health < 0.5f)
             {
                 DestroyEnemy();
                 _score.UpdateScore(5);
@@ -52,11 +60,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
     public virtual void DestroyEnemy()
     {
         GameObjectManager.countEnemy--;
         Destroy(gameObject);
     }
 
+    
 }

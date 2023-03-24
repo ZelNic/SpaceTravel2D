@@ -6,17 +6,24 @@ public class PlayerController : MonoBehaviour
     [Header("Set in Inspector")]
     [SerializeField] private int _maxHealth;
     [SerializeField] private GameObject _goScore;
-    [SerializeField] private Slider _slider;   
+    [SerializeField] private Slider _slider;
     public GameObject gameObjectManager;
     public GameObject projectileHero;
     public GameObject pointCreateProjectile;
-    public float rateOfFire;
+
     private Rigidbody2D _rb;
-    private float _timeCreate;    
+    private float _timeCreate;
     private Score _score;
     private HealthBar _healthBar;
     private int _currentHealth;
     private TakingDamage _takingDamage;
+
+    private bool activeSpeedModForFire = false;
+    private float timerForModForFire;
+    [SerializeField] private float timeActiveFireMod;
+    [SerializeField] private float _rateOfFire;
+    private float defultRateOfFire;
+
 
     private void Awake()
     {
@@ -26,34 +33,7 @@ public class PlayerController : MonoBehaviour
         _currentHealth = _maxHealth;
         _healthBar = _slider.GetComponent<HealthBar>();
         _takingDamage = GetComponent<TakingDamage>();
-    }
-
-    public int health
-    {
-        get { return _currentHealth; }
-        set { _currentHealth = value; }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        GameObject other = collision.gameObject;
-        if (other.tag == "Enemy")
-        {
-            health--;
-            _takingDamage.ChangeColorTakingDamage();
-            Enemy _enemy = other.GetComponent<Enemy>();
-            _score.UpdateScore(10);
-            _enemy.DestroyEnemy();
-
-        }
-        if (other.tag == "PartBigEnemy")
-        {
-            health--;
-            _takingDamage.ChangeColorTakingDamage();
-            PartsBigEnemy _pbe = other.GetComponent<PartsBigEnemy>();
-            _score.UpdateScore(10);
-            _pbe.DestroyPart();
-        }
+        defultRateOfFire = _rateOfFire;
     }
 
     private void FixedUpdate()
@@ -61,9 +41,81 @@ public class PlayerController : MonoBehaviour
         GetDamage();
         UpdateHealthBar();
         MovePlayer();
-        if (_timeCreate < Time.time)
+        CreateProjectileHero();
+        BonusSpeedFire();
+        print(rateOfFire);
+    }
+
+    public int health
+    {
+        get { return _currentHealth; }
+        set
         {
-            CreateProjectileHero();
+            _currentHealth = value;
+            if (_currentHealth > _maxHealth)
+            {
+                _currentHealth = _maxHealth;
+            }
+        }
+    }
+    public float rateOfFire
+    {
+        get { return _rateOfFire; }
+        set
+        {
+            _rateOfFire = value;
+        }
+    }
+
+
+    public void BonusSpeedFire()
+    {
+        if (Time.time > timerForModForFire)
+        {
+
+            activeSpeedModForFire = false;
+        }
+
+        if (activeSpeedModForFire == false)
+        {
+            _rateOfFire = defultRateOfFire;
+        }
+        if (activeSpeedModForFire == true)
+        {
+            rateOfFire = 0.25f;
+        }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameObject other = collision.gameObject;
+
+        switch (other.tag)
+        {
+            case "Enemy":
+                health--;
+                _takingDamage.ChangeColorTakingDamage();
+                Enemy _enemy = other.GetComponent<Enemy>();
+                _score.UpdateScore(10);
+                _enemy.DestroyEnemy();
+                break;
+            case "PartBigEnemy":
+                health--;
+                _takingDamage.ChangeColorTakingDamage();
+                PartsBigEnemy _pbe = other.GetComponent<PartsBigEnemy>();
+                _score.UpdateScore(10);
+                _pbe.DestroyPart();
+                break;
+            case "HP":
+                health++;
+                Destroy(other);
+                break;
+            case "PowerUp":
+                timerForModForFire = Time.time + timeActiveFireMod;
+                activeSpeedModForFire = true;
+                Destroy(other);
+                break;
         }
     }
 
@@ -97,10 +149,13 @@ public class PlayerController : MonoBehaviour
 
     private void CreateProjectileHero()
     {
-        _timeCreate = Time.time + rateOfFire;
-        GameObject proje = Instantiate(projectileHero, pointCreateProjectile.transform);
-        proje.transform.position = pointCreateProjectile.transform.position;
-
+        if (_timeCreate < Time.time)
+        {
+            _timeCreate = Time.time + rateOfFire;
+            GameObject proje = Instantiate(projectileHero, pointCreateProjectile.transform);
+            proje.transform.position = pointCreateProjectile.transform.position;
+        }
     }
+
 
 }

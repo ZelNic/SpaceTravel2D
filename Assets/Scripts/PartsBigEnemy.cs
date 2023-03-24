@@ -21,12 +21,11 @@ public class PartsBigEnemy : MonoBehaviour
         { 
             _health = value;
             _takingDamage.ChangeColorTakingDamage();
-            if (_health == 0)
+            if (_health < 0f)
             {
                 DestroyPart();
                 _score.UpdateScore(5);
-            }
-            
+            }            
         }
     }
 

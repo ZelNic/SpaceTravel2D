@@ -11,6 +11,7 @@ TagManager:
   - PowerUp
   - BigEnemy
   - PartBigEnemy
+  - HP
   layers:
   - Default
   - TransparentFX

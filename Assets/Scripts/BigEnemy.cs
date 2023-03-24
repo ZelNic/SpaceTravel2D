@@ -76,7 +76,7 @@ public class BigEnemy : MonoBehaviour
     }
     public void DestroyEnemy()
     {        
-        GameObjectManager.countBigEnemy--;
+        GameObjectManager.countBigEnemy--;       
         Destroy(gameObject);
     }
 
