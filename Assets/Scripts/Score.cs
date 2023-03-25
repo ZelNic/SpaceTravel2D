@@ -55,14 +55,7 @@ public class Score : MonoBehaviour
             PlayerPrefs.SetInt("hightScore", hightScore);
             PlayerPrefs.Save();            
         }
-        textHighScore.text = hightScore.ToString();
-
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            PlayerPrefs.DeleteKey("hightScore");
-            hightScore = 0;
-        }
+        textHighScore.text = hightScore.ToString();        
     }
         
 

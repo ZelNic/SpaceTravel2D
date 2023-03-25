@@ -397,6 +397,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1514800395}
+    - target: {fileID: 3856568638329573466, guid: bf9d070a8ecd9ed4b892f8e038640033, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Menu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf9d070a8ecd9ed4b892f8e038640033, type: 3}
 --- !u!114 &630521059585381076 stripped
@@ -517,6 +521,14 @@ PrefabInstance:
     - target: {fileID: 4620474011627906802, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
+      propertyPath: plusTimeForEnemy
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
+      propertyPath: _startCreateBigEnemys
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: arrayPowerUP.Array.size
