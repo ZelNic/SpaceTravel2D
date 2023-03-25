@@ -48,7 +48,7 @@ public class ProjectileHero : MonoBehaviour
         if (other.tag == "PartBigEnemy")
         {
             PartsBigEnemy _pbe = other.GetComponent<PartsBigEnemy>();
-            _pbe.health -= 1;            
+            _pbe.health -= 1;               
             Destroy(gameObject);
         }
     }

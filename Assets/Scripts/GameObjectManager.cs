@@ -21,8 +21,7 @@ public class GameObjectManager : MonoBehaviour
 
 
     private void Awake()
-    {
-        Application.targetFrameRate = 120;
+    {        
         countBigEnemy = 0;
         countEnemy = 0;
     }

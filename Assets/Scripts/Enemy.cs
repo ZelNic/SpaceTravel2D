@@ -58,14 +58,14 @@ public class Enemy : MonoBehaviour
             _takingDamage.ChangeColorTakingDamage();
             if (_health < 0.5f)
             {
-                DestroyEnemy();
                 _score.UpdateScore(5);
+                DestroyEnemy();                
             }
         }
     }
 
     public virtual void DestroyEnemy()
-    {
+    {        
         GameObjectManager.countEnemy--;
         GameObjectManager.scoreKillEnemys++;
         if(createPowerUp == true)

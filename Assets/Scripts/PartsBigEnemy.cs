@@ -23,8 +23,8 @@ public class PartsBigEnemy : MonoBehaviour
             _takingDamage.ChangeColorTakingDamage();
             if (_health < 0f)
             {
-                DestroyPart();
                 _score.UpdateScore(5);
+                DestroyPart();               
             }            
         }
     }
