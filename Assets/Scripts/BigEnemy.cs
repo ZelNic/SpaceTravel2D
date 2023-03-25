@@ -8,7 +8,7 @@ public class BigEnemy : MonoBehaviour
     [SerializeField] public List<GameObject> part;
     [SerializeField] private float _speedBigEnemy;
     [SerializeField] private GameObject _gameObM;
-    [SerializeField] private GameObjectManager _gom;
+    private GameObjectManager _gom;
     private BoundsCheck _boundsCheck;
     private Rigidbody2D _rb;
     public static int healthBigEnemy;

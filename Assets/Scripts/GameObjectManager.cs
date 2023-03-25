@@ -60,7 +60,7 @@ public class GameObjectManager : MonoBehaviour
         GameObject powerUpGO = Instantiate(crystal);
         powerUpGO.transform.position = transform.position;
         powerUpGO.transform.position += new Vector3(1, 0, 0);
-
+        return;
     }
 
     public void CreateCrystal(BigEnemy bigEnemy, Transform transform)
@@ -68,7 +68,7 @@ public class GameObjectManager : MonoBehaviour
         GameObject powerUpGO = Instantiate(crystal);
         powerUpGO.transform.position = transform.position;
         powerUpGO.transform.position += new Vector3(1, 0, 0);
-
+        return;
     }
 
     public void SpawnEnemy()

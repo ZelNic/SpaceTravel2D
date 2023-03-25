@@ -142,9 +142,8 @@ MonoBehaviour:
   - {fileID: 2448295039964057286}
   - {fileID: 2727118881020268773}
   part: []
-  _speedBigEnemy: 0
-  _gameObM: {fileID: 7805503782268883601}
-  _gom: {fileID: 0}
+  _speedBigEnemy: 5
+  _gameObM: {fileID: 4620474011627906804, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
 --- !u!114 &-2001656506581193875
 MonoBehaviour:
   m_ObjectHideFlags: 0
