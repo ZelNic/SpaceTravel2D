@@ -11,13 +11,17 @@ public class Enemy : MonoBehaviour
     public Score _score;
     public bool rotationEnemy;
     public float speedRotation;
+    public bool createPowerUp;
+    public GameObject gom;
+    private GameObjectManager _gom;
 
     public void Awake()
     {
         _boundsCheck = GetComponent<BoundsCheck>();
         _rb = GetComponent<Rigidbody2D>();
         _takingDamage = GetComponent<TakingDamage>();
-        _score = goScore.GetComponent<Score>();
+        _score = goScore.GetComponent<Score>();  
+        _gom = gom.GetComponent<GameObjectManager>();
     }
 
     private void FixedUpdate()
@@ -63,6 +67,11 @@ public class Enemy : MonoBehaviour
     public virtual void DestroyEnemy()
     {
         GameObjectManager.countEnemy--;
+        GameObjectManager.scoreKillEnemys++;
+        if(createPowerUp == true)
+        {
+            _gom.CreatePowerUp(true, this.transform);
+        }        
         Destroy(gameObject);
     }
 

@@ -12,6 +12,7 @@ TagManager:
   - BigEnemy
   - PartBigEnemy
   - HP
+  - Weapon
   layers:
   - Default
   - TransparentFX

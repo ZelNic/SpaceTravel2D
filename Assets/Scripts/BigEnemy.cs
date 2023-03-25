@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BigEnemy : MonoBehaviour
@@ -7,7 +6,7 @@ public class BigEnemy : MonoBehaviour
     [SerializeField] private GameObject prefabs;
     [SerializeField] private Transform[] transformsPointSpawn;
     [SerializeField] public List<GameObject> part;
-    [SerializeField] private float speedBigEnemy;    
+    [SerializeField] private float speedBigEnemy;
     private BoundsCheck _boundsCheck;
     private Rigidbody2D _rb;
     public static int healthBigEnemy;
@@ -18,12 +17,12 @@ public class BigEnemy : MonoBehaviour
         healthBigEnemy = 5;
         CreateBigEnemy();
         _boundsCheck = GetComponent<BoundsCheck>();
-        _rb = GetComponent<Rigidbody2D>();        
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
     {
-        _halfHeight.y = _boundsCheck.camHeight - 10f;        
+        _halfHeight.y = _boundsCheck.camHeight - 10f;
     }
 
     public void CreateBigEnemy()
@@ -54,9 +53,9 @@ public class BigEnemy : MonoBehaviour
         {
             _rb.position -= new Vector2(0, speedBigEnemy * Time.deltaTime);
         }
-        else _rb.position += new Vector2(speedBigEnemy * Time.deltaTime, 0);              
-        
-        
+        else _rb.position += new Vector2(speedBigEnemy * Time.deltaTime, 0);
+
+
         if (_boundsCheck.offRight)
         {
             speedBigEnemy = -Mathf.Abs(speedBigEnemy);
@@ -75,8 +74,9 @@ public class BigEnemy : MonoBehaviour
         }
     }
     public void DestroyEnemy()
-    {        
-        GameObjectManager.countBigEnemy--;       
+    {
+        GameObjectManager.countBigEnemy--;
+        GameObjectManager.scoreKillEnemys++;
         Destroy(gameObject);
     }
 

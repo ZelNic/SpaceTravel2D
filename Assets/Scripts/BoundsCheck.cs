@@ -51,8 +51,6 @@ public class BoundsCheck : MonoBehaviour
             offDown = true;
         }
 
-
-
         isOnScreen = !(offRight || offLeft || offUp || offDown);
         {
             if (keepOnScreen && !isOnScreen)
@@ -62,8 +60,9 @@ public class BoundsCheck : MonoBehaviour
                 offRight = offLeft = offUp = offDown = false;
             }
         }
-
     }
+
+
     private void OnDrawGizmos()
     {
         if (!Application.isPlaying) return;

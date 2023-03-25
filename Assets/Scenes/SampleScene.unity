@@ -259,7 +259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 630521061044772203, guid: bf9d070a8ecd9ed4b892f8e038640033, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 630521061044772203, guid: bf9d070a8ecd9ed4b892f8e038640033, type: 3}
       propertyPath: m_AnchorMax.x
@@ -344,7 +344,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4149921709149169549, guid: d09b738c17cc24b49844b0f7afaada31, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4149921709149169549, guid: d09b738c17cc24b49844b0f7afaada31, type: 3}
       propertyPath: m_LocalPosition.x
@@ -444,96 +444,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: plusTime
-      value: 0.5
+      propertyPath: arrayPowerUP.Array.size
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: enemySpawner
+      propertyPath: arrayPowerUP.Array.data[5]
       value: 
-      objectReference: {fileID: 4149921709149169550, guid: d09b738c17cc24b49844b0f7afaada31, type: 3}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: setCurrentCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: enemy.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: maxCountBigEnemy
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: plusTimeForEnemy
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: _maxCountBigEnemy
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: currentCountEnemy
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: startCreateEnemys
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: bigEnemy.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: enemy.Array.data[0]
-      value: 
-      objectReference: {fileID: 8126083887628908272, guid: 363f258ab5aa70d45b73da297a65e357, type: 3}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: enemy.Array.data[1]
-      value: 
-      objectReference: {fileID: 2631322876825150010, guid: 2e223507e08393748b3bbf4d2e0b5b2c, type: 3}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: enemy.Array.data[2]
-      value: 
-      objectReference: {fileID: 4094855236269623269, guid: f2a41da0e8baf4f4eaae320a6de30b28, type: 3}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: enemy.Array.data[3]
-      value: 
-      objectReference: {fileID: 6419634028198889504, guid: 0e5bba345cc2ed84d879682c099e256f, type: 3}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: enemy.Array.data[4]
-      value: 
-      objectReference: {fileID: 8492868490788326628, guid: 47cf9cb8f49ef29468d9e1df273c1d7f, type: 3}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: plusTimeForBigEnemy
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: startCreateBigEnemys
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: maxCountEnemyOnScreen
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: timeCreateForBigEnemy
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: _maxCountEnemyOnScreen
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: bigEnemy.Array.data[0]
-      value: 
-      objectReference: {fileID: 7805503782268883601, guid: 0fcbb8104d03d5e49a7b227f368c3e22, type: 3}
+      objectReference: {fileID: 8422623796221809548, guid: 0481b96a8e83a9542aee223b9e91b63b, type: 3}
     - target: {fileID: 4620474011627906804, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: m_Name
       value: GameObjectManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 4620474011627906804, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
@@ -550,11 +470,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3961064157123766516, guid: 1849612c4118b80418eb5dc98a03ec2c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.735
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3961064157123766516, guid: 1849612c4118b80418eb5dc98a03ec2c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.60023
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3961064157123766516, guid: 1849612c4118b80418eb5dc98a03ec2c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -597,10 +517,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 347162831}
     - target: {fileID: 3967073270061745093, guid: 1849612c4118b80418eb5dc98a03ec2c, type: 3}
-      propertyPath: _rateOfFire
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3967073270061745093, guid: 1849612c4118b80418eb5dc98a03ec2c, type: 3}
       propertyPath: gameObjectManager
       value: 
       objectReference: {fileID: 470013331}
@@ -619,15 +535,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6800894787823151372, guid: e38d1355cfa2fff47babde0403e88332, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0.07463518
+      value: 0.6132076
       objectReference: {fileID: 0}
     - target: {fileID: 6800894787823151372, guid: e38d1355cfa2fff47babde0403e88332, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0.012014951
+      value: 0.5991517
       objectReference: {fileID: 0}
     - target: {fileID: 6800894787823151372, guid: e38d1355cfa2fff47babde0403e88332, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0.09433961
+      value: 0.51775545
       objectReference: {fileID: 0}
     - target: {fileID: 6800894787823151375, guid: e38d1355cfa2fff47babde0403e88332, type: 3}
       propertyPath: m_Name

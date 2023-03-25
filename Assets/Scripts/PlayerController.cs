@@ -8,8 +8,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _goScore;
     [SerializeField] private Slider _slider;
     public GameObject gameObjectManager;
+
     public GameObject projectileHero;
     public GameObject pointCreateProjectile;
+    public GameObject pointCPLeft;
+    public GameObject pointCPRight;
+    private int countWepons;
+
 
     private Rigidbody2D _rb;
     private float _timeCreate;
@@ -34,6 +39,7 @@ public class PlayerController : MonoBehaviour
         _healthBar = _slider.GetComponent<HealthBar>();
         _takingDamage = GetComponent<TakingDamage>();
         defultRateOfFire = _rateOfFire;
+        countWepons = 0;
     }
 
     private void FixedUpdate()
@@ -43,7 +49,6 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
         CreateProjectileHero();
         BonusSpeedFire();
-        print(rateOfFire);
     }
 
     public int health
@@ -116,6 +121,19 @@ public class PlayerController : MonoBehaviour
                 activeSpeedModForFire = true;
                 Destroy(other);
                 break;
+            case "Weapon":
+                countWepons++;
+                Destroy(other);
+                if (countWepons == 1)
+                {
+                    pointCPLeft.SetActive(true);
+                }
+                if (countWepons == 2)
+                {
+                    pointCPRight.SetActive(true);
+                }
+                break;
+
         }
     }
 
@@ -154,6 +172,12 @@ public class PlayerController : MonoBehaviour
             _timeCreate = Time.time + rateOfFire;
             GameObject proje = Instantiate(projectileHero, pointCreateProjectile.transform);
             proje.transform.position = pointCreateProjectile.transform.position;
+            
+            GameObject proje1 = Instantiate(projectileHero, pointCPLeft.transform);
+            proje1.transform.position = pointCPLeft.transform.position;
+            
+            GameObject proje2 = Instantiate(projectileHero, pointCPRight.transform);
+            proje2.transform.position = pointCPRight.transform.position;
         }
     }
 

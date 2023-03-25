@@ -139,9 +139,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 2
-  speed: 25
+  speed: 20
   goScore: {fileID: 2418562503317077798, guid: 9d9e603ba1f25a544845bb344936c817, type: 3}
   _score: {fileID: 0}
+  rotationEnemy: 0
+  speedRotation: 0
+  createPowerUp: 0
+  gom: {fileID: 4620474011627906804, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
 --- !u!50 &-8332123509383165699
 Rigidbody2D:
   serializedVersion: 4
