@@ -12,6 +12,18 @@ public class Score : MonoBehaviour
     [SerializeField] private Text textHighScore;
     private int _hightScore;
 
+    [SerializeField] private Text textCountCrystal;
+    private int _crystal;
+
+    public int crystal
+    {
+        get { return _crystal; }
+        set 
+        {
+         _crystal = value;
+        } 
+    }
+        
 
     public int hightScore
     {
@@ -32,8 +44,7 @@ public class Score : MonoBehaviour
 
     private void Awake()
     {
-        _score = 0;
-        _pc = player.GetComponent<PlayerController>();
+        _score = 0;        
         textScore.text = "0";
         
 
@@ -42,6 +53,12 @@ public class Score : MonoBehaviour
             hightScore = PlayerPrefs.GetInt("hightScore", hightScore);
             textHighScore.text = hightScore.ToString();
         }
+
+        if (PlayerPrefs.HasKey("Crystal"))
+        {
+            crystal = PlayerPrefs.GetInt("Crystal", crystal);
+            textCountCrystal.text = crystal.ToString();
+        }       
 
     }
 
@@ -55,7 +72,14 @@ public class Score : MonoBehaviour
             PlayerPrefs.SetInt("hightScore", hightScore);
             PlayerPrefs.Save();            
         }
-        textHighScore.text = hightScore.ToString();        
+        textHighScore.text = hightScore.ToString();
+        textCountCrystal.text = crystal.ToString();
+
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PlayerPrefs.DeleteAll();
+        }
     }
         
 
@@ -64,6 +88,13 @@ public class Score : MonoBehaviour
         score += value;       
     }
 
-   
+    public void UpdateCrystal(int value)
+    {
+        crystal += value;
+        PlayerPrefs.SetInt("Crystal", crystal);
+        PlayerPrefs.Save();
+    }
+
+
 
 }

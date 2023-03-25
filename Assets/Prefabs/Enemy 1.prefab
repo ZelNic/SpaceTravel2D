@@ -421,6 +421,7 @@ MonoBehaviour:
   rotationEnemy: 1
   speedRotation: 20
   createPowerUp: 1
+  createCrystal: 1
   gom: {fileID: 4620474011627906804, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
 --- !u!114 &-807747644410903029
 MonoBehaviour:

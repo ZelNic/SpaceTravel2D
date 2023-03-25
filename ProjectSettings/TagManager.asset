@@ -13,6 +13,7 @@ TagManager:
   - PartBigEnemy
   - HP
   - Weapon
+  - Crystal
   layers:
   - Default
   - TransparentFX

@@ -34,6 +34,7 @@ public class PartsBigEnemy : MonoBehaviour
         int healthBE = BigEnemy.healthBigEnemy;        
         healthBE--;
         BigEnemy.healthBigEnemy = healthBE;
+        
         Destroy(gameObject);
     }
 }

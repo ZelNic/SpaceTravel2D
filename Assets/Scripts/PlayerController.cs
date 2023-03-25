@@ -133,6 +133,13 @@ public class PlayerController : MonoBehaviour
                     pointCPRight.SetActive(true);
                 }
                 break;
+            case "Crystal":
+                _score.UpdateCrystal(10);
+                Destroy(other);
+                break;
+               
+
+
 
         }
     }
@@ -172,10 +179,10 @@ public class PlayerController : MonoBehaviour
             _timeCreate = Time.time + rateOfFire;
             GameObject proje = Instantiate(projectileHero, pointCreateProjectile.transform);
             proje.transform.position = pointCreateProjectile.transform.position;
-            
+
             GameObject proje1 = Instantiate(projectileHero, pointCPLeft.transform);
             proje1.transform.position = pointCPLeft.transform.position;
-            
+
             GameObject proje2 = Instantiate(projectileHero, pointCPRight.transform);
             proje2.transform.position = pointCPRight.transform.position;
         }

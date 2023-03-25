@@ -6,7 +6,9 @@ public class BigEnemy : MonoBehaviour
     [SerializeField] private GameObject prefabs;
     [SerializeField] private Transform[] transformsPointSpawn;
     [SerializeField] public List<GameObject> part;
-    [SerializeField] private float speedBigEnemy;
+    [SerializeField] private float _speedBigEnemy;
+    [SerializeField] private GameObject _gameObM;
+    [SerializeField] private GameObjectManager _gom;
     private BoundsCheck _boundsCheck;
     private Rigidbody2D _rb;
     public static int healthBigEnemy;
@@ -18,6 +20,7 @@ public class BigEnemy : MonoBehaviour
         CreateBigEnemy();
         _boundsCheck = GetComponent<BoundsCheck>();
         _rb = GetComponent<Rigidbody2D>();
+        _gom = _gameObM.GetComponent<GameObjectManager>();
     }
 
     private void Start()
@@ -51,18 +54,18 @@ public class BigEnemy : MonoBehaviour
     {
         if (_rb.position.y > _halfHeight.y)
         {
-            _rb.position -= new Vector2(0, speedBigEnemy * Time.deltaTime);
+            _rb.position -= new Vector2(0, _speedBigEnemy * Time.deltaTime);
         }
-        else _rb.position += new Vector2(speedBigEnemy * Time.deltaTime, 0);
+        else _rb.position += new Vector2(_speedBigEnemy * Time.deltaTime, 0);
 
 
         if (_boundsCheck.offRight)
         {
-            speedBigEnemy = -Mathf.Abs(speedBigEnemy);
+            _speedBigEnemy = -Mathf.Abs(_speedBigEnemy);
         }
         if (_boundsCheck.offLeft)
         {
-            speedBigEnemy = Mathf.Abs(speedBigEnemy);
+            _speedBigEnemy = Mathf.Abs(_speedBigEnemy);
         }
 
     }
@@ -78,6 +81,7 @@ public class BigEnemy : MonoBehaviour
         GameObjectManager.countBigEnemy--;
         GameObjectManager.scoreKillBigEnemys++;
         GameObjectManager.ScoreForBoss();
+        _gom.CreateCrystal(this, transform);
         Destroy(gameObject);
     }
 

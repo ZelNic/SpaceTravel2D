@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public bool rotationEnemy;
     public float speedRotation;
     public bool createPowerUp;
+    public bool createCrystal;
     public GameObject gom;
     private GameObjectManager _gom;
 
@@ -70,8 +71,13 @@ public class Enemy : MonoBehaviour
         GameObjectManager.scoreKillEnemys++;
         if(createPowerUp == true)
         {
-            _gom.CreatePowerUp(true, this.transform);
-        }        
+            _gom.CreatePowerUp(this, transform);
+        }
+        if (createCrystal == true)
+        {
+            _gom.CreateCrystal(this, transform);
+        }
+
         Destroy(gameObject);
     }
 

@@ -165,7 +165,8 @@ MonoBehaviour:
   _score: {fileID: 0}
   rotationEnemy: 0
   speedRotation: 0
-  createPowerUp: 1
+  createPowerUp: 0
+  createCrystal: 0
   gom: {fileID: 4620474011627906804, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
 --- !u!114 &8974821305366200517
 MonoBehaviour:
