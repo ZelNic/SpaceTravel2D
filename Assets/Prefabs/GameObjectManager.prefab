@@ -65,11 +65,7 @@ MonoBehaviour:
   _maxCountEnemyOnScreen: 5
   _maxCountBigEnemy: 1
   _startCreateEnemys: 0
-  _startCreateBigEnemys: 20
+  _startCreateBigEnemys: 30
   _chanceCreatePowerUp: 9
   plusTimeForEnemy: 0.5
   plusTimeForBigEnemy: 30
-  intCountEnemyCrystal: 0
-  intCountEnemyMedKit: 0
-  intCountEnemyFast: 0
-  intCountEnemyZigZag: 0

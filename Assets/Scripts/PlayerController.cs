@@ -112,6 +112,11 @@ public class PlayerController : MonoBehaviour
                 _score.UpdateScore(10);
                 _pbe.DestroyPart();
                 break;
+            case "ProjectileEnemy":
+                health--;
+                _takingDamage.ChangeColorTakingDamage();
+                Destroy(other);
+                break;
             case "HP":
                 health++;
                 Destroy(other);
@@ -141,7 +146,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(other);
                 GameObjectManager.countCrystal--;
                 break;
-               
+
 
 
 

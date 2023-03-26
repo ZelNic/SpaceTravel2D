@@ -69,8 +69,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void DestroyEnemy()
     {        
-        GameObjectManager.countEnemy--;
-        GameObjectManager.scoreKillEnemys++;
+        GameObjectManager.countEnemy--;        
         if(createPowerUp == true)
         {
             _gom.CreatePowerUp(this, transform);

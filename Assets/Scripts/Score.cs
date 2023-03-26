@@ -46,8 +46,7 @@ public class Score : MonoBehaviour
     {
         _score = 0;        
         textScore.text = "0";
-        
-        PlayerPrefs.DeleteAll();
+                
         if (PlayerPrefs.HasKey("hightScore"))
         {
             hightScore = PlayerPrefs.GetInt("hightScore", hightScore);

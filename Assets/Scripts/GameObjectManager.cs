@@ -3,11 +3,14 @@ using UnityEngine;
 
 public class GameObjectManager : MonoBehaviour
 {
+    [Header("Prefabs")]
     public GameObject[] enemy;
     public GameObject[] bigEnemy;
     public GameObject[] arrayPowerUP;
     public GameObject crystal;
     public GameObject medKit;
+
+    [Header("Set in Inspector")]
     [SerializeField] private int _maxCountEnemyOnScreen;
     [SerializeField] private int _maxCountBigEnemy;
     [SerializeField] private float _startCreateEnemys;
@@ -32,11 +35,6 @@ public class GameObjectManager : MonoBehaviour
         countEnemy = 0;        
         countPowerUp = 0;
         countCrystal = 0;
-    }
-
-    private void Update()
-    {
-        print(timeDethBigEnemy);
     }
 
     private void LateUpdate()
