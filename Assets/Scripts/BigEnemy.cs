@@ -78,8 +78,7 @@ public class BigEnemy : MonoBehaviour
     }
     public void DestroyEnemy()
     {
-        GameObjectManager.countBigEnemy--;
-        GameObjectManager.scoreKillBigEnemys++;        
+        GameObjectManager.countBigEnemy--;               
         GameObjectManager.timeDethBigEnemy = Time.time +30f;
         _gom.CreateCrystal(this, transform);
         Destroy(gameObject);

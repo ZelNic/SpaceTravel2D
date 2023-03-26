@@ -13,21 +13,18 @@ public class GameObjectManager : MonoBehaviour
     [SerializeField] private float _startCreateEnemys;
     [SerializeField] private float _startCreateBigEnemys;
     [SerializeField] private float _chanceCreatePowerUp;
-    private float _timeCreate;    
     private GameObject _enemySpawner;
+    
+    private float _timeCreate;        
     public float plusTimeForEnemy;
     public float plusTimeForBigEnemy;
+    
     public static int countEnemy;
     public static int countBigEnemy;
-    public static int scoreKillEnemys;
-    public static int scoreKillBigEnemys = 1;
-    public static int scoreForBoss;
     public static int countPowerUp;
-    public static int countCrystal;
-    public static int counMedKit;
+    public static int countCrystal;    
     public static float timeDethBigEnemy;
-    public int countPUp;
-    public int countCral;
+   
 
     private void Awake()
     {
