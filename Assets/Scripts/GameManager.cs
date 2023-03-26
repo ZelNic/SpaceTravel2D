@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     public static void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("MainScene");
     }
 
     public void GoPlay()

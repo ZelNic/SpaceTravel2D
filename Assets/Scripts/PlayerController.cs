@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
         }
         if (activeSpeedModForFire == true)
         {
-            rateOfFire = 0.25f;
+            rateOfFire = 0.2f;
         }
     }
 

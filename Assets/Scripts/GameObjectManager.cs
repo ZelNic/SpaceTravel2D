@@ -1,4 +1,3 @@
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class GameObjectManager : MonoBehaviour
@@ -17,22 +16,22 @@ public class GameObjectManager : MonoBehaviour
     [SerializeField] private float _startCreateBigEnemys;
     [SerializeField] private float _chanceCreatePowerUp;
     private GameObject _enemySpawner;
-    
-    private float _timeCreate;        
+
+    private float _timeCreate;
     public float plusTimeForEnemy;
     public float plusTimeForBigEnemy;
-    
+
     public static int countEnemy;
     public static int countBigEnemy;
     public static int countPowerUp;
-    public static int countCrystal;    
+    public static int countCrystal;
     public static float timeDethBigEnemy;
-   
+
 
     private void Awake()
     {
         countBigEnemy = 0;
-        countEnemy = 0;        
+        countEnemy = 0;
         countPowerUp = 0;
         countCrystal = 0;
     }
@@ -69,7 +68,7 @@ public class GameObjectManager : MonoBehaviour
             indInArray = Random.Range(0, arrayPowerUP.Length);
             GameObject powerUpGO = Instantiate(arrayPowerUP[indInArray]);
             powerUpGO.transform.position = transform.position;
-            countPowerUp++;            
+            countPowerUp++;
             return;
         }
 
@@ -132,10 +131,10 @@ public class GameObjectManager : MonoBehaviour
         _enemySpawner = Instantiate(bigEnemy[indInArray]);
         countBigEnemy++;
         Transform posEnemy = _enemySpawner.GetComponent<Transform>();
-        posEnemy.transform.position = new Vector3(0, 25, 0);        
+        posEnemy.transform.position = new Vector3(0, 25, 0);
         return;
     }
-    
+
 
 
 
