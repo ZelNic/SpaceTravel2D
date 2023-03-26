@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Slider _slider;
     public GameObject gameObjectManager;
 
+    public GameObject gm;
+    private GameManager _gm;
+
     public GameObject projectileHero;
     public GameObject pointCreateProjectile;
     public GameObject pointCPLeft;
@@ -33,11 +36,12 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _rb.position = Vector2.zero;
         _score = _goScore.GetComponent<Score>();
-        _currentHealth = _maxHealth;
         _healthBar = _slider.GetComponent<HealthBar>();
         _takingDamage = GetComponent<TakingDamage>();
+        _gm = gm.GetComponent<GameManager>();
+        _currentHealth = _maxHealth;
+        _rb.position = Vector2.zero;
         defultRateOfFire = _rateOfFire;
         countWepons = 0;
     }
@@ -173,7 +177,7 @@ public class PlayerController : MonoBehaviour
         if (health == 0)
         {
             Destroy(gameObject);
-            GameManager.Restart();
+            _gm.DelayedRestart();
         }
     }
     private void UpdateHealthBar()

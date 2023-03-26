@@ -30,11 +30,21 @@ public class GameObjectManager : MonoBehaviour
 
     private void Awake()
     {
+        DefultForStatic();
+    }
+
+    public static void DefultForStatic()
+    {
         countBigEnemy = 0;
         countEnemy = 0;
         countPowerUp = 0;
         countCrystal = 0;
+        timeDethBigEnemy = 0;
     }
+
+
+
+
 
     private void LateUpdate()
     {

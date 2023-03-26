@@ -5012,12 +5012,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1093457101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6800894787823151375, guid: e38d1355cfa2fff47babde0403e88332, type: 3}
+  m_PrefabInstance: {fileID: 6800894787335786867}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1514800395 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6800894787335786869, guid: e38d1355cfa2fff47babde0403e88332, type: 3}
   m_PrefabInstance: {fileID: 6800894787335786867}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1093457101}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e22c3b17ad36ce74caadbee9a6b05af6, type: 3}
@@ -5257,6 +5262,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
+      propertyPath: plusTimeForBigEnemy
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
+      propertyPath: _startCreateBigEnemys
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4620474011627906804, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: m_Name
       value: GameObjectManager
@@ -5314,6 +5327,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3967073270061745093, guid: 1849612c4118b80418eb5dc98a03ec2c, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 1093457101}
     - target: {fileID: 3967073270061745093, guid: 1849612c4118b80418eb5dc98a03ec2c, type: 3}
       propertyPath: _slider
       value: 
