@@ -270,6 +270,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
+  powerUp: 0
+  crystal: 0
+  medKit: 1
 --- !u!70 &4199819660000289290
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

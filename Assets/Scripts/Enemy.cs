@@ -13,8 +13,10 @@ public class Enemy : MonoBehaviour
     public float speedRotation;
     public bool createPowerUp;
     public bool createCrystal;
+    public bool createMedKit;
     public GameObject gom;
     private GameObjectManager _gom;
+    
 
     public void Awake()
     {
@@ -76,6 +78,10 @@ public class Enemy : MonoBehaviour
         if (createCrystal == true)
         {
             _gom.CreateCrystal(this, transform);
+        }
+        if (createMedKit == true)
+        {
+            _gom.CreateMedKit(this, transform);
         }
 
         Destroy(gameObject);

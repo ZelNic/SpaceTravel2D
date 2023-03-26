@@ -185,6 +185,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 60
+  powerUp: 0
+  crystal: 1
+  medKit: 0
 --- !u!114 &-623523678771620585
 MonoBehaviour:
   m_ObjectHideFlags: 0

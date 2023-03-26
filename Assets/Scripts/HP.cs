@@ -7,6 +7,10 @@ public class HP : MonoBehaviour
     private float timeLive = 5f;
     private float startLive;
 
+    public bool powerUp;
+    public bool crystal;
+    public bool medKit;
+
     private void Awake()
     {
         _boundsCheck = GetComponent<BoundsCheck>();
@@ -21,7 +25,22 @@ public class HP : MonoBehaviour
 
         if (_boundsCheck.offDown || startLive < Time.time)
         {
-            Destroy(gameObject);
+            if(medKit == true)
+            {
+                GameObjectManager.countPowerUp--;
+                Destroy(gameObject);
+            }
+            if(crystal == true)
+            {
+                GameObjectManager.countCrystal--;
+                Destroy(gameObject);
+            }
+            if (powerUp == true) 
+            {
+                GameObjectManager.countPowerUp--;
+                Destroy(gameObject);
+            }          
+            
         }
 
     }

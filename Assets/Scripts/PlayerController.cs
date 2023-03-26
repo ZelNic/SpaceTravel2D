@@ -115,11 +115,13 @@ public class PlayerController : MonoBehaviour
             case "HP":
                 health++;
                 Destroy(other);
+                GameObjectManager.countPowerUp--;
                 break;
             case "PowerUp":
                 timerForModForFire = Time.time + timeActiveFireMod;
                 activeSpeedModForFire = true;
                 Destroy(other);
+                GameObjectManager.countPowerUp--;
                 break;
             case "Weapon":
                 countWepons++;
@@ -132,10 +134,12 @@ public class PlayerController : MonoBehaviour
                 {
                     pointCPRight.SetActive(true);
                 }
+                GameObjectManager.countPowerUp--;
                 break;
             case "Crystal":
                 _score.UpdateCrystal(10);
                 Destroy(other);
+                GameObjectManager.countCrystal--;
                 break;
                
 
