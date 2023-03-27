@@ -6,8 +6,7 @@ public class PlayerController : MonoBehaviour
     [Header("Set in Inspector")]
     [SerializeField] private int _maxHealth;
     [SerializeField] private GameObject _goScore;
-    [SerializeField] private Slider _slider;
-    public GameObject gameObjectManager;
+    [SerializeField] private Slider _slider;    
 
     public GameObject gm;
     private GameManager _gm;
@@ -39,7 +38,7 @@ public class PlayerController : MonoBehaviour
         _score = _goScore.GetComponent<Score>();
         _healthBar = _slider.GetComponent<HealthBar>();
         _takingDamage = GetComponent<TakingDamage>();
-        _gm = gm.GetComponent<GameManager>();
+        _gm = gm.GetComponent<GameManager>();        
         _currentHealth = _maxHealth;
         _rb.position = Vector2.zero;
         defultRateOfFire = _rateOfFire;
@@ -107,7 +106,7 @@ public class PlayerController : MonoBehaviour
                 _takingDamage.ChangeColorTakingDamage();
                 Enemy _enemy = other.GetComponent<Enemy>();
                 _score.UpdateScore(10);
-                _enemy.DestroyEnemy();
+                GameObjectManager.GOM.DestroyGO(other);                
                 break;
             case "PartBigEnemy":
                 health--;
@@ -124,13 +123,13 @@ public class PlayerController : MonoBehaviour
             case "HP":
                 health++;
                 Destroy(other);
-                GameObjectManager.countPowerUp--;
+                GameObjectManager.GOM.DestroyGO(other);
                 break;
             case "PowerUp":
                 timerForModForFire = Time.time + timeActiveFireMod;
                 activeSpeedModForFire = true;
                 Destroy(other);
-                GameObjectManager.countPowerUp--;
+                GameObjectManager.GOM.DestroyGO(other);
                 break;
             case "Weapon":
                 countWepons++;
@@ -143,17 +142,13 @@ public class PlayerController : MonoBehaviour
                 {
                     pointCPRight.SetActive(true);
                 }
-                GameObjectManager.countPowerUp--;
+                GameObjectManager.GOM.DestroyGO(other);
                 break;
             case "Crystal":
                 _score.UpdateCrystal(10);
-                Destroy(other);
-                GameObjectManager.countCrystal--;
+                GameObjectManager.GOM.DestroyGO(other);
+                Destroy(other);                
                 break;
-
-
-
-
         }
     }
 
@@ -177,7 +172,7 @@ public class PlayerController : MonoBehaviour
         if (health == 0)
         {
             Destroy(gameObject);
-            _gm.DelayedRestart();
+            _gm.Restart();
         }
     }
     private void UpdateHealthBar()

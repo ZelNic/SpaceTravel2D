@@ -9,12 +9,15 @@ public class PartsBigEnemy : MonoBehaviour
     private Score _score;
     private TakingDamage _takingDamage;
     private float _timeCreateProjectile;
-    private GameObject _proEnemy;
+    public GameObject _proEnemy;
+    public GameObject goBE;
+    private BigEnemy BE;
 
     private void Start()
     {
         _score = goScore.GetComponent<Score>();
         _takingDamage = GetComponent<TakingDamage>();
+        BE= goBE.GetComponent<BigEnemy>();
     }
 
     public int health
@@ -52,10 +55,10 @@ public class PartsBigEnemy : MonoBehaviour
 
     public void DestroyPart()
     {
-        int healthBE = BigEnemy.healthBigEnemy;
+        
+        int healthBE = BE.healthBigEnemy;
         healthBE--;
-        BigEnemy.healthBigEnemy = healthBE;
-
+        BE.healthBigEnemy = healthBE;        
         Destroy(gameObject);
     }
 }

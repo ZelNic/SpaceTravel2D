@@ -12,18 +12,9 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 120;
     }
-    public void DelayedRestart()
-    {
-        Invoke("Restart", 2f);
-    }
+    
     public void Restart()
-    {
-        GameObjectManager.countBigEnemy = 0;
-        GameObjectManager.countEnemy = 0;
-        GameObjectManager.countPowerUp = 0;
-        GameObjectManager.countCrystal = 0;
-        GameObjectManager.timeDethBigEnemy = 0;
-
+    {        
         SceneManager.LoadScene("MainScene");
     }
 

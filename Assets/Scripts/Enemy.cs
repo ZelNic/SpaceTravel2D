@@ -2,6 +2,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    
+    public void Awake()
+    {
+        _boundsCheck = GetComponent<BoundsCheck>();
+        _rb = GetComponent<Rigidbody2D>();
+        _takingDamage = GetComponent<TakingDamage>();
+        _score = goScore.GetComponent<Score>();       
+    }
+
     [SerializeField] private int _health = 5;
     private BoundsCheck _boundsCheck;
     private Rigidbody2D _rb;
@@ -14,20 +23,13 @@ public class Enemy : MonoBehaviour
     public bool createPowerUp;
     public bool createCrystal;
     public bool createMedKit;
-    public GameObject gom;
-    private GameObjectManager _gom;
+    
+    private bool _destroyed = false;
     
 
-    public void Awake()
-    {
-        _boundsCheck = GetComponent<BoundsCheck>();
-        _rb = GetComponent<Rigidbody2D>();
-        _takingDamage = GetComponent<TakingDamage>();
-        _score = goScore.GetComponent<Score>();  
-        _gom = gom.GetComponent<GameObjectManager>();
-    }
+    
 
-    private void FixedUpdate()
+    private void Update()
     {
         PositionCheck();
         MoveEnemy();
@@ -35,7 +37,7 @@ public class Enemy : MonoBehaviour
 
     private void PositionCheck()
     {
-        if (_boundsCheck != null && _boundsCheck.offDown)
+        if (_boundsCheck.offDown)
         {
             DestroyEnemy();
         }
@@ -68,23 +70,23 @@ public class Enemy : MonoBehaviour
     }
 
     public virtual void DestroyEnemy()
-    {        
-        GameObjectManager.countEnemy--;        
+    {
+        if(createCrystal == true)
+        {
+            GameObjectManager.GOM.CreateCrystal(gameObject, transform);
+        }
+        if(createMedKit == true)
+        {
+            GameObjectManager.GOM.CreatePowerUp(gameObject, transform);
+        }
         if(createPowerUp == true)
         {
-            _gom.CreatePowerUp(this, transform);
-        }
-        if (createCrystal == true)
-        {
-            _gom.CreateCrystal(this, transform);
-        }
-        if (createMedKit == true)
-        {
-            _gom.CreateMedKit(this, transform);
+            GameObjectManager.GOM.CreatePowerUp(gameObject, transform);
         }
 
-        Destroy(gameObject);
+        GameObjectManager.GOM.DestroyGO(gameObject);        
     }
+
 
     
 }

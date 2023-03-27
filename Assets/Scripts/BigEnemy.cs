@@ -7,25 +7,32 @@ public class BigEnemy : MonoBehaviour
     [SerializeField] private Transform[] transformsPointSpawn;
     [SerializeField] public List<GameObject> part;
     [SerializeField] private float _speedBigEnemy;
-    [SerializeField] private GameObject _gameObM;
+    [SerializeField] private GameObject _go;
     private GameObjectManager _gom;
     private BoundsCheck _boundsCheck;
     private Rigidbody2D _rb;
-    public static int healthBigEnemy;
+    public int healthBigEnemy;
     private Vector2 _halfHeight;
 
     private void Awake()
     {
-        healthBigEnemy = 5;
         CreateBigEnemy();
+        healthBigEnemy = 5;        
         _boundsCheck = GetComponent<BoundsCheck>();
-        _rb = GetComponent<Rigidbody2D>();
-        _gom = _gameObM.GetComponent<GameObjectManager>();
+        _rb = GetComponent<Rigidbody2D>();        
     }
 
     private void Start()
     {
         _halfHeight.y = _boundsCheck.camHeight - 10f;
+    }
+
+    private void FixedUpdate()
+    {
+        PositionCheck();
+        MoveEnemy();
+        UpdateHealthBigEnemy();
+
     }
 
     public void CreateBigEnemy()
@@ -35,14 +42,7 @@ public class BigEnemy : MonoBehaviour
             var child = Instantiate(prefabs, transformsPointSpawn[i]);
             part.Add(child);
         }
-    }
-    private void FixedUpdate()
-    {
-        PositionCheck();
-        MoveEnemy();
-        UpdateHealthBigEnemy();
-
-    }
+    }    
     private void PositionCheck()
     {
         if (_boundsCheck.offDown)
@@ -77,11 +77,10 @@ public class BigEnemy : MonoBehaviour
         }
     }
     public void DestroyEnemy()
-    {
-        GameObjectManager.countBigEnemy--;               
-        GameObjectManager.timeDethBigEnemy = Time.time +30f;
-        _gom.CreateCrystal(this, transform);
-        Destroy(gameObject);
+    {        
+        GameObjectManager.GOM.timeDethBigEnemy = Time.time + 30f;
+        GameObjectManager.GOM.CreateCrystal(gameObject, transform);
+        GameObjectManager.GOM.DestroyGO(gameObject);
     }
 
 

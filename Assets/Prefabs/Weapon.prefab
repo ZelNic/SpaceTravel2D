@@ -274,6 +274,7 @@ MonoBehaviour:
   powerUp: 1
   crystal: 0
   medKit: 0
+  go: {fileID: 4620474011627906804, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
 --- !u!114 &-5647167586257494502
 MonoBehaviour:
   m_ObjectHideFlags: 0

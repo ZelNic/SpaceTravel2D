@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GameObjectManager : MonoBehaviour
 {
+    static public GameObjectManager GOM;
+
     [Header("Prefabs")]
     public GameObject[] enemy;
     public GameObject[] bigEnemy;
@@ -20,33 +22,43 @@ public class GameObjectManager : MonoBehaviour
     private float _timeCreate;
     public float plusTimeForEnemy;
     public float plusTimeForBigEnemy;
+       
+    public int countBigEnemy;
+    public int countPowerUp;
+    public int countCrystal;
+    public float timeDethBigEnemy;
 
-    public static int countEnemy;
-    public static int countBigEnemy;
-    public static int countPowerUp;
-    public static int countCrystal;
-    public static float timeDethBigEnemy;
+
+    
+    public int _countEnemy;
+
+    public void Update()
+    {
+        
+    }
+
+    public int countEnemy
+    {
+        get { return _countEnemy; }
+        set
+        {
+            _countEnemy = value;
+            if (_countEnemy < 0)
+            {
+                _countEnemy = 0;
+            }
+        }
+    }
 
 
     private void Awake()
     {
-        DefultForStatic();
-    }
-
-    public static void DefultForStatic()
-    {
-        countBigEnemy = 0;
-        countEnemy = 0;
-        countPowerUp = 0;
-        countCrystal = 0;
+        GOM = this;
         timeDethBigEnemy = 0;
     }
 
 
-
-
-
-    private void LateUpdate()
+    public void FixedUpdate()
     {
 
         if (countPowerUp < 0)
@@ -69,7 +81,7 @@ public class GameObjectManager : MonoBehaviour
         }
     }
 
-    public void CreatePowerUp(Enemy enemy, Transform transform)
+    public void CreatePowerUp(GameObject gameObject, Transform transform)
     {
         int rand = Random.Range(0, 11);
         if (8 < rand && countPowerUp < 1)
@@ -79,36 +91,23 @@ public class GameObjectManager : MonoBehaviour
             GameObject powerUpGO = Instantiate(arrayPowerUP[indInArray]);
             powerUpGO.transform.position = transform.position;
             countPowerUp++;
-            return;
+            
         }
 
-    }
-    public void CreateCrystal(Enemy enemy, Transform transform)
+    }    
+
+    public void CreateCrystal(GameObject gameObject, Transform transform)
     {
         if (countCrystal < 1)
         {
             countCrystal++;
             GameObject powerUpGO = Instantiate(crystal);
             powerUpGO.transform.position = transform.position;
-            powerUpGO.transform.position += new Vector3(1, 0, 0);
-            return;
-        }
+            powerUpGO.transform.position += new Vector3(1, 0, 0);            
+        }        
     }
-
-    public void CreateCrystal(BigEnemy bigEnemy, Transform transform)
-    {
-        if (countCrystal < 1)
-        {
-            countCrystal++;
-            GameObject powerUpGO = Instantiate(crystal);
-            powerUpGO.transform.position = transform.position;
-            powerUpGO.transform.position += new Vector3(1, 0, 0);
-            return;
-        }
-
-    }
-
-    public void CreateMedKit(Enemy enemy, Transform transform)
+    
+    public void CreateMedKit(GameObject gameObject, Transform transform)
     {
         int rand = Random.Range(0, 11);
         if (8 < rand && countPowerUp < 1)
@@ -116,22 +115,20 @@ public class GameObjectManager : MonoBehaviour
             GameObject powerUpGO = Instantiate(medKit);
             powerUpGO.transform.position = transform.position;
             powerUpGO.transform.position += new Vector3(1, 0, 0);
-            countPowerUp++;
-            return;
+            countPowerUp++;            
         }
-
     }
 
     public void SpawnEnemy()
     {
-        int indInArray = 59;
-        indInArray = Random.Range(0, enemy.Length);
+       
+        int indInArray = Random.Range(0, enemy.Length);
         _enemySpawner = Instantiate(enemy[indInArray]);
-        countEnemy++;
         Transform posEnemy = _enemySpawner.GetComponent<Transform>();
         posEnemy.transform.position = new Vector3(Random.Range(-10, 10), Random.Range(25, 45), 0);
+        
         _timeCreate = Time.time + plusTimeForEnemy;
-        return;
+        countEnemy++;       
     }
 
     public void SpawnBigEnemy()
@@ -145,9 +142,19 @@ public class GameObjectManager : MonoBehaviour
         return;
     }
 
+    public void DestroyGO(GameObject gameObject)
+    {
+        Destroy(gameObject);
+        switch (gameObject.tag)
+        {
+            case "Enemy": countEnemy--; break;
+            case "BigEnemy": countBigEnemy--; break;
+            case "PowerUp": countPowerUp--; break;
+            case "Crystal": countCrystal--; break;
+        }
 
-
-
+        
+    }
 
 
 

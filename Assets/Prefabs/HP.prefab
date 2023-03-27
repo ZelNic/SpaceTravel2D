@@ -273,6 +273,7 @@ MonoBehaviour:
   powerUp: 0
   crystal: 0
   medKit: 1
+  go: {fileID: 4620474011627906804, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
 --- !u!70 &4199819660000289290
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
