@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
         if (health == 0)
         {
             Destroy(gameObject);
-            _gm.Restart();
+            GameObjectManager.GOM.Restart();
         }
     }
     private void UpdateHealthBar()

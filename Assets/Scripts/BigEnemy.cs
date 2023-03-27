@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BigEnemy : MonoBehaviour
 {
     [SerializeField] private List<GameObject> part;
