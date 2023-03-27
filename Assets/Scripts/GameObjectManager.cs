@@ -3,7 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class GameObjectManager : MonoBehaviour
 {
+  
+    
     static public GameObjectManager GOM;
+
+
+    
 
     [Header("Prefabs")]
     public GameObject[] enemy;
@@ -30,17 +35,29 @@ public class GameObjectManager : MonoBehaviour
     public int countPowerUp;
     public int countCrystal;
     public float timeDethBigEnemy;
-
-
-
-    
     public int _countEnemy;
+    
+    public int countKillEnemy;
+
+    public int goalKill;
 
 
-    public void Update()
+    public void UpdateGoal()
     {
-        
+        if(countKillEnemy == 5)
+        {
+            goalKill = 5;
+        }
+        if (countKillEnemy == 30)
+        {
+            goalKill = 30;
+        }
+        if (countKillEnemy == 60)
+        {
+            goalKill = 60;
+        }
     }
+
 
     public int countEnemy
     {
@@ -65,7 +82,8 @@ public class GameObjectManager : MonoBehaviour
 
     public void FixedUpdate()
     {
-
+        UpdateGoal();
+        print(goalKill);
         if (countPowerUp < 0)
         {
             countPowerUp = 0;
@@ -80,10 +98,10 @@ public class GameObjectManager : MonoBehaviour
         {
             SpawnEnemy();
         }
-        if (countBigEnemy < _maxCountBigEnemy && _startCreateBigEnemys < Time.time && timeDethBigEnemy < Time.time)
+        /*if (countEnemy < _maxCountBigEnemy)
         {
             SpawnBigEnemy();
-        }
+        }*/
     }
 
     public void CreatePowerUp(GameObject gameObject, Transform transform)
@@ -95,10 +113,8 @@ public class GameObjectManager : MonoBehaviour
             indInArray = Random.Range(0, arrayPowerUP.Length);
             GameObject powerUpGO = Instantiate(arrayPowerUP[indInArray]);
             powerUpGO.transform.position = transform.position;
-            countPowerUp++;
-            
+            countPowerUp++;            
         }
-
     }    
 
     public void CreateCrystal(GameObject gameObject, Transform transform)
@@ -159,15 +175,11 @@ public class GameObjectManager : MonoBehaviour
             case "Crystal": countCrystal--; break;
         }
 
-        
     }
 
+    
 
-    public void Restart()
-    {
 
-        SceneManager.LoadScene("MainScene");
-    }
 
 
 

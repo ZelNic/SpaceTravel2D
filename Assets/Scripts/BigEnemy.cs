@@ -31,10 +31,7 @@ public class BigEnemy : MonoBehaviour
         MoveEnemy();
         UpdateHealthBigEnemy();
 
-        if(GameObjectManager.GOM.countPartBigEnemy == 5)
-        {
-            Destroy(gameObject);
-        }
+        
 
     }
         
@@ -73,9 +70,14 @@ public class BigEnemy : MonoBehaviour
     }
     public void DestroyEnemy()
     {
-        GameObjectManager.GOM.timeDethBigEnemy = Time.time + 30f;
-        GameObjectManager.GOM.CreateCrystal(gameObject, transform);
-        GameObjectManager.GOM.DestroyGO(gameObject);
+        if (GameObjectManager.GOM.countPartBigEnemy == 5)
+        {
+            Destroy(gameObject);
+            GameObjectManager.GOM.timeDethBigEnemy = Time.time + 30f;
+            GameObjectManager.GOM.CreateCrystal(gameObject, transform);
+            GameObjectManager.GOM.DestroyGO(gameObject);
+        }
+        
     }
 
    

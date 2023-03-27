@@ -11,15 +11,13 @@ public class HP : MonoBehaviour
     public bool crystal;
     public bool medKit;
 
-    public GameObject go;
-    private GameObjectManager _gom;
+
 
     private void Awake()
     {
         _boundsCheck = GetComponent<BoundsCheck>();
         startLive = Time.time + timeLive;
-        _gom = go.GetComponent<GameObjectManager>();
-    }
+    }   
 
     private void FixedUpdate()
     {
