@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
                 health--;
                 _takingDamage.ChangeColorTakingDamage();
                 PartsBigEnemy _pbe = other.GetComponent<PartsBigEnemy>();
-                _score.UpdateScore(10);
+                _score.UpdateScore(10);  
                 _pbe.DestroyPart();
                 break;
             case "ProjectileEnemy":

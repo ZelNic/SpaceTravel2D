@@ -3,23 +3,20 @@ using UnityEngine;
 
 public class BigEnemy : MonoBehaviour
 {
-    [SerializeField] private GameObject prefabs;
-    [SerializeField] private Transform[] transformsPointSpawn;
-    [SerializeField] public List<GameObject> part;
+    [SerializeField] private List<GameObject> part;
     [SerializeField] private float _speedBigEnemy;
     [SerializeField] private GameObject _go;
-    private GameObjectManager _gom;
+   
     private BoundsCheck _boundsCheck;
     private Rigidbody2D _rb;
-    public int healthBigEnemy;
+    public  int healthBigEnemy;
     private Vector2 _halfHeight;
 
     private void Awake()
-    {
-        CreateBigEnemy();
-        healthBigEnemy = 5;        
+    {   
+        healthBigEnemy = 5;
         _boundsCheck = GetComponent<BoundsCheck>();
-        _rb = GetComponent<Rigidbody2D>();        
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -33,16 +30,13 @@ public class BigEnemy : MonoBehaviour
         MoveEnemy();
         UpdateHealthBigEnemy();
 
-    }
-
-    public void CreateBigEnemy()
-    {
-        for (int i = 0; i < transformsPointSpawn.Length; i++)
+        if(GameObjectManager.GOM.countPartBigEnemy == 5)
         {
-            var child = Instantiate(prefabs, transformsPointSpawn[i]);
-            part.Add(child);
+            Destroy(gameObject);
         }
-    }    
+
+    }
+        
     private void PositionCheck()
     {
         if (_boundsCheck.offDown)
@@ -77,15 +71,13 @@ public class BigEnemy : MonoBehaviour
         }
     }
     public void DestroyEnemy()
-    {        
+    {
         GameObjectManager.GOM.timeDethBigEnemy = Time.time + 30f;
         GameObjectManager.GOM.CreateCrystal(gameObject, transform);
         GameObjectManager.GOM.DestroyGO(gameObject);
     }
 
-
-
-
+   
 
 
 

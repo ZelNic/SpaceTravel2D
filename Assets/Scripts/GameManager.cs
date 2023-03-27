@@ -12,9 +12,11 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 120;
     }
-    
+        
+
     public void Restart()
-    {        
+    {
+           
         SceneManager.LoadScene("MainScene");
     }
 

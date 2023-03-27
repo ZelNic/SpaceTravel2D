@@ -483,38 +483,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: enemy.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: _maxCountBigEnemy
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: _startCreateEnemys
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: enemy.Array.data[0]
-      value: 
-      objectReference: {fileID: 8126083887628908272, guid: 363f258ab5aa70d45b73da297a65e357, type: 3}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: enemy.Array.data[1]
-      value: 
-      objectReference: {fileID: 2631322876825150010, guid: 2e223507e08393748b3bbf4d2e0b5b2c, type: 3}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: enemy.Array.data[2]
-      value: 
-      objectReference: {fileID: 4094855236269623269, guid: f2a41da0e8baf4f4eaae320a6de30b28, type: 3}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: enemy.Array.data[3]
-      value: 
-      objectReference: {fileID: 6419634028198889504, guid: 0e5bba345cc2ed84d879682c099e256f, type: 3}
-    - target: {fileID: 4620474011627906803, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
-      propertyPath: enemy.Array.data[4]
-      value: 
-      objectReference: {fileID: 8492868490788326628, guid: 47cf9cb8f49ef29468d9e1df273c1d7f, type: 3}
     - target: {fileID: 4620474011627906804, guid: 6740ed085f6b4184a8ddf122a47273fa, type: 3}
       propertyPath: m_Name
       value: GameObjectManager

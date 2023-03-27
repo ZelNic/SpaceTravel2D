@@ -9,15 +9,14 @@ public class PartsBigEnemy : MonoBehaviour
     private Score _score;
     private TakingDamage _takingDamage;
     private float _timeCreateProjectile;
-    public GameObject _proEnemy;
+    private GameObject _proEnemy;
     public GameObject goBE;
-    private BigEnemy BE;
+    private BigEnemy _be;
 
     private void Start()
     {
         _score = goScore.GetComponent<Score>();
         _takingDamage = GetComponent<TakingDamage>();
-        BE= goBE.GetComponent<BigEnemy>();
     }
 
     public int health
@@ -38,27 +37,22 @@ public class PartsBigEnemy : MonoBehaviour
     public void FixedUpdate()
     {
         CreateProjectile();
-        
     }
-    
+
 
     public void CreateProjectile()
-    {        
+    {
         if (_timeCreateProjectile < Time.time)
         {
-           _proEnemy = Instantiate(projectileEnemyPrefab);
-           _proEnemy.transform.position = this.transform.position;
-           _timeCreateProjectile = Time.time + Random.Range(2f,5f);
+            _proEnemy = Instantiate(projectileEnemyPrefab);
+            _proEnemy.transform.position = transform.position;
+            _timeCreateProjectile = Time.time + Random.Range(2f, 5f);
         }
-    }  
-
+    }
 
     public void DestroyPart()
     {
-        
-        int healthBE = BE.healthBigEnemy;
-        healthBE--;
-        BE.healthBigEnemy = healthBE;        
+        GameObjectManager.GOM.countPartBigEnemy++;
         Destroy(gameObject);
     }
 }

@@ -45,7 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy:
+  - {fileID: 8126083887628908272, guid: 363f258ab5aa70d45b73da297a65e357, type: 3}
+  - {fileID: 2631322876825150010, guid: 2e223507e08393748b3bbf4d2e0b5b2c, type: 3}
   - {fileID: 4094855236269623269, guid: f2a41da0e8baf4f4eaae320a6de30b28, type: 3}
+  - {fileID: 6419634028198889504, guid: 0e5bba345cc2ed84d879682c099e256f, type: 3}
+  - {fileID: 8492868490788326628, guid: 47cf9cb8f49ef29468d9e1df273c1d7f, type: 3}
   bigEnemy:
   - {fileID: 7805503782268883601, guid: 0fcbb8104d03d5e49a7b227f368c3e22, type: 3}
   arrayPowerUP:
@@ -55,13 +59,14 @@ MonoBehaviour:
   crystal: {fileID: 8029754131815460298, guid: f3d69e9ebae24594dacce8448b9c6456, type: 3}
   medKit: {fileID: 7830386942860961939, guid: 24b73557e94ea6f43970d0ff2faa381f, type: 3}
   _maxCountEnemyOnScreen: 5
-  _maxCountBigEnemy: 0
-  _startCreateEnemys: 0
-  _startCreateBigEnemys: 30
+  _maxCountBigEnemy: 1
+  _startCreateEnemys: 5
+  _startCreateBigEnemys: 5
   _chanceCreatePowerUp: 9
   plusTimeForEnemy: 0.5
   plusTimeForBigEnemy: 30
   countBigEnemy: 0
+  countPartBigEnemy: 0
   countPowerUp: 0
   countCrystal: 0
   timeDethBigEnemy: 0

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameObjectManager : MonoBehaviour
 {
@@ -24,13 +25,17 @@ public class GameObjectManager : MonoBehaviour
     public float plusTimeForBigEnemy;
        
     public int countBigEnemy;
+    public int countPartBigEnemy;
+
     public int countPowerUp;
     public int countCrystal;
     public float timeDethBigEnemy;
 
 
+
     
     public int _countEnemy;
+
 
     public void Update()
     {
@@ -137,6 +142,7 @@ public class GameObjectManager : MonoBehaviour
         indInArray = Random.Range(0, bigEnemy.Length);
         _enemySpawner = Instantiate(bigEnemy[indInArray]);
         countBigEnemy++;
+        countPartBigEnemy = 0;
         Transform posEnemy = _enemySpawner.GetComponent<Transform>();
         posEnemy.transform.position = new Vector3(0, 25, 0);
         return;
@@ -157,7 +163,11 @@ public class GameObjectManager : MonoBehaviour
     }
 
 
+    public void Restart()
+    {
 
+        SceneManager.LoadScene("MainScene");
+    }
 
 
 
