@@ -39,58 +39,54 @@ public class GameObjectManager : MonoBehaviour
         get { return _countPartBigEnemy; }
         set { _countPartBigEnemy = value; }
     }
-
     public int CountCrystal
     {
         get { return _countCrystal; }
         set
         {
             _countCrystal = value;
-            if (_countCrystal <= 0)
+            if (_countCrystal < 0)
             {
                 _countCrystal = 0;
             }
         }
     }
-
     public int CountPowerUp
     {
         get { return _countPowerUp; }
         set
         {
             _countPowerUp = value;
-            if (_countPowerUp <= 0)
+            if (_countPowerUp < 0)
             {
                 _countPowerUp = 0;
             }
         }
     }
-
     public int CountMedKit
     {
         get { return _countMedKit; }
         set
         {
             _countMedKit = value;
-            if (_countMedKit <= 0)
+            if (_countMedKit < 0)
             {
                 _countMedKit = 0;
             }
         }
     }
-
     public int CountWeapon
     {
         get { return _countWeapon; }
-        set 
-        { _countWeapon = value; 
-            if (_countWeapon <= 0)
+        set
+        {
+            _countWeapon = value;
+            if (_countWeapon < 0)
             {
                 _countWeapon = 0;
             }
         }
     }
-
     public int CountEnemy
     {
         get { return _countEnemy; }
@@ -103,19 +99,16 @@ public class GameObjectManager : MonoBehaviour
             }
         }
     }
-
     public int CountBigEnemy
     {
         get { return _countBigEnemy; }
         set { _countBigEnemy = value; }
     }
-
     public float TimeCreate
     {
         get { return _timeCreate; }
         set { _timeCreate = value; }
     }
-
     public float TimeDethBigEnemy
     {
         get { return _timeDethBigEnemy; }
@@ -123,21 +116,12 @@ public class GameObjectManager : MonoBehaviour
     }
 
     private void Awake()
-    {
-        if (GOM == null)
-        {
-            GOM = this;
-            DontDestroyOnLoad(this);
-            return;
-        }
-        Destroy(this.gameObject);
-
-
-
+    {       
+        GOM = this;
     }
 
     public void FixedUpdate()
-    {   
+    {
         if (CountEnemy < _maxCountEnemyOnScreen && TimeCreate < Time.timeSinceLevelLoad && _startCreateEnemys < Time.timeSinceLevelLoad)
         {
             SpawnEnemy();

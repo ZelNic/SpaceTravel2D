@@ -6,15 +6,15 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private Button play;
     [SerializeField] private Button pause;
-    [SerializeField] private Button menu;
+    [SerializeField] private Button menu;    
+    
 
     private void Awake()
     {
         Application.targetFrameRate = 120;
     }
 
-
-    public void Restart()
+    public void Reset()
     {
         GameObjectManager.GOM.CountBigEnemy = 0;
         GameObjectManager.GOM.CountEnemy = 0;
@@ -24,22 +24,31 @@ public class GameManager : MonoBehaviour
         GameObjectManager.GOM.CountWeapon = 0;
         GameObjectManager.GOM.TimeCreate = 0;
         GameObjectManager.GOM.TimeDethBigEnemy = 0;
-        GameObjectManager.GOM.CountPartBigEnemy = 0;
+        GameObjectManager.GOM.CountPartBigEnemy = 0;        
+    }
+
+    public void Restart()
+    {
+        Reset();
         SceneManager.LoadScene("MainScene");
     }
 
     public void GoPlay()
     {
+        Reset();
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainScene");
     }
 
     public void ExitFromApp()
     {
+        Reset();
         Application.Quit();
     }
 
     public void Menu()
     {
+        Reset();
         SceneManager.LoadScene("Menu");
     }
 

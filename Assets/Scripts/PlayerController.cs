@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     [Header("Set in Inspector")]
     [SerializeField] private int _maxHealth;
     [SerializeField] private GameObject _goScore;
-    [SerializeField] private Slider _slider;    
+    [SerializeField] private Slider _slider;
 
     public GameObject gm;
     private GameManager _gm;
@@ -32,13 +32,16 @@ public class PlayerController : MonoBehaviour
     private float defultRateOfFire;
 
 
+    private Vector2 touchStartPosition;
+    private float movementSpeed = 2f;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _score = _goScore.GetComponent<Score>();
         _healthBar = _slider.GetComponent<HealthBar>();
         _takingDamage = GetComponent<TakingDamage>();
-        _gm = gm.GetComponent<GameManager>();        
+        _gm = gm.GetComponent<GameManager>();
         _currentHealth = _maxHealth;
         _rb.position = Vector2.zero;
         defultRateOfFire = _rateOfFire;
@@ -46,7 +49,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {        
+    {
         UpdateHealthBar();
         MovePlayer();
         CreateProjectileHero();
@@ -110,13 +113,13 @@ public class PlayerController : MonoBehaviour
                 _takingDamage.ChangeColorTakingDamage();
                 Enemy _enemy = other.GetComponent<Enemy>();
                 _score.UpdateScore(10);
-                GameObjectManager.GOM.DestroyGO(other);                
+                GameObjectManager.GOM.DestroyGO(other);
                 break;
             case "PartBigEnemy":
                 health--;
                 _takingDamage.ChangeColorTakingDamage();
                 PartsBigEnemy _pbe = other.GetComponent<PartsBigEnemy>();
-                _score.UpdateScore(10);  
+                _score.UpdateScore(10);
                 _pbe.DestroyPart();
                 break;
             case "ProjectileEnemy":
@@ -130,11 +133,11 @@ public class PlayerController : MonoBehaviour
                 break;
             case "PowerUp":
                 timerForModForFire = Time.time + timeActiveFireMod;
-                activeSpeedModForFire = true;                
+                activeSpeedModForFire = true;
                 GameObjectManager.GOM.DestroyGO(other);
                 break;
             case "Weapon":
-                countWepons++;                
+                countWepons++;
                 if (countWepons == 1)
                 {
                     pointCPLeft.SetActive(true);
@@ -147,7 +150,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case "Crystal":
                 _score.UpdateCrystal(10);
-                GameObjectManager.GOM.DestroyGO(other);                            
+                GameObjectManager.GOM.DestroyGO(other);
                 break;
         }
     }
@@ -161,12 +164,18 @@ public class PlayerController : MonoBehaviour
         float xAxis = pos3DMouse.x;
         float yAxis = pos3DMouse.y;
 
-        Vector3 pos = transform.position;
-        pos.x = xAxis;
-        pos.y = yAxis + 4f;
-        transform.position = pos;
+
+        Vector3 currentPos = transform.position;
+
+        Vector3 targetPos = new Vector3(xAxis, yAxis + 3f, currentPos.z);
+
+
+        float movingTime = 0.5f;
+        transform.position = Vector3.Lerp(currentPos, targetPos, movingTime);
+
+
     }
-        
+
     private void UpdateHealthBar()
     {
         _healthBar.UpdateHealthBar(_maxHealth, health);

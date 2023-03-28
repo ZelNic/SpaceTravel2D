@@ -63,7 +63,7 @@ public class Score : MonoBehaviour
 
     public void Update()
     {
-        textScore.text = score.ToString();
+        textScore.text = "s: " + score.ToString();
         
         if (score > hightScore)
         {

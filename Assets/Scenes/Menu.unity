@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &463870026
 RectTransform:
   m_ObjectHideFlags: 0
@@ -904,7 +904,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &1909252227
 RectTransform:
@@ -948,7 +948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2042192126
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1139,6 +1139,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6800894787335786869, guid: e38d1355cfa2fff47babde0403e88332, type: 3}
+      propertyPath: play
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6800894787823151375, guid: e38d1355cfa2fff47babde0403e88332, type: 3}
       propertyPath: m_Name
       value: MainCamera

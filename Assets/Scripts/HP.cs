@@ -25,7 +25,7 @@ public class HP : MonoBehaviour
         transform.position -= new Vector3(0, 2 * Time.deltaTime);
 
 
-        if (_boundsCheck.offDown || startLive < Time.time)
+        if (_boundsCheck.offDown || startLive < Time.timeSinceLevelLoad)
         {
             if(medKit == true)
             {
