@@ -5,9 +5,7 @@ using UnityEngine;
 public class BigEnemy : MonoBehaviour
 {
     [SerializeField] private List<GameObject> part;
-    [SerializeField] private float _speedBigEnemy;
-    [SerializeField] private GameObject _go;
-   
+    [SerializeField] private float _speedBigEnemy;   
     private BoundsCheck _boundsCheck;
     private Rigidbody2D _rb;
     public  int healthBigEnemy;
@@ -73,7 +71,7 @@ public class BigEnemy : MonoBehaviour
         if (GameObjectManager.GOM.countPartBigEnemy == 5)
         {
             Destroy(gameObject);
-            GameObjectManager.GOM.timeDethBigEnemy = Time.time + 30f;
+            GameObjectManager.GOM.timeDethBigEnemy = Time.timeSinceLevelLoad + 30f;
             GameObjectManager.GOM.CreateCrystal(gameObject, transform);
             GameObjectManager.GOM.DestroyGO(gameObject);
         }

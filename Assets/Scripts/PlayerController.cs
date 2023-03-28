@@ -46,8 +46,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
-        GetDamage();
+    {        
         UpdateHealthBar();
         MovePlayer();
         CreateProjectileHero();
@@ -63,6 +62,11 @@ public class PlayerController : MonoBehaviour
             if (_currentHealth > _maxHealth)
             {
                 _currentHealth = _maxHealth;
+            }
+            if (_currentHealth <= 0)
+            {
+                Destroy(gameObject);
+                _gm.Restart();
             }
         }
     }
@@ -166,15 +170,7 @@ public class PlayerController : MonoBehaviour
         pos.y = yAxis + 4f;
         transform.position = pos;
     }
-
-    public void GetDamage()
-    {
-        if (health == 0)
-        {
-            Destroy(gameObject);
-            _gm.Restart();
-        }
-    }
+        
     private void UpdateHealthBar()
     {
         _healthBar.UpdateHealthBar(_maxHealth, health);

@@ -82,8 +82,7 @@ public class Enemy : MonoBehaviour
         if(createPowerUp == true)
         {
             GameObjectManager.GOM.CreatePowerUp(gameObject, transform);
-        }
-        GameObjectManager.GOM.countKillEnemy++;        
+        }              
         GameObjectManager.GOM.DestroyGO(gameObject);        
     }
 

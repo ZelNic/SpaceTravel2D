@@ -1,21 +1,15 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameObjectManager : MonoBehaviour
 {
-  
-    
-    static public GameObjectManager GOM;
-
-
-    
+    public static GameObjectManager GOM { get; private set; }
 
     [Header("Prefabs")]
-    public GameObject[] enemy;
-    public GameObject[] bigEnemy;
-    public GameObject[] arrayPowerUP;
-    public GameObject crystal;
-    public GameObject medKit;
+    [SerializeField] private GameObject[] m_enemy;
+    [SerializeField] private GameObject[] m_bigEnemy;
+    [SerializeField] private GameObject[] m_arrayPowerUP;
+    [SerializeField] private GameObject crystal;
+    [SerializeField] private GameObject medKit;
 
     [Header("Set in Inspector")]
     [SerializeField] private int _maxCountEnemyOnScreen;
@@ -26,42 +20,20 @@ public class GameObjectManager : MonoBehaviour
     private GameObject _enemySpawner;
 
     private float _timeCreate;
-    public float plusTimeForEnemy;
-    public float plusTimeForBigEnemy;
-       
-    public int countBigEnemy;
+    [SerializeField] private float _plusTimeForEnemy;
+    [SerializeField] private float _plusTimeForBigEnemy;
+
+    private int _countBigEnemy;
     public int countPartBigEnemy;
 
-    public int countPowerUp;
-    public int countCrystal;
+    [SerializeField] private int _countPowerUp;
+    [SerializeField] private int _countCrystal;    
+    private int _countEnemy;
     public float timeDethBigEnemy;
-    public int _countEnemy;
-    
-    public int countKillEnemy;
 
-    public int goalKill;
-
-
-    public void UpdateGoal()
+    public int CountEnemy
     {
-        if(countKillEnemy == 5)
-        {
-            goalKill = 5;
-        }
-        if (countKillEnemy == 30)
-        {
-            goalKill = 30;
-        }
-        if (countKillEnemy == 60)
-        {
-            goalKill = 60;
-        }
-    }
-
-
-    public int countEnemy
-    {
-        get { return _countEnemy; }
+        get { return _countEnemy = 0; }
         set
         {
             _countEnemy = value;
@@ -72,92 +44,117 @@ public class GameObjectManager : MonoBehaviour
         }
     }
 
-
-    private void Awake()
+    public int CountBigEnemy
     {
-        GOM = this;
-        timeDethBigEnemy = 0;
+        get { return _countBigEnemy; }
+        set { _countBigEnemy = value; }
+    }
+
+     public float TimeCreate
+    {
+        get { return _timeCreate = 0f; }
+        set { _timeCreate = value; }
     }
 
 
+    private void Awake()
+    {
+        if (GOM == null)
+        {
+            GOM = this;
+            DontDestroyOnLoad(this);
+            return;
+        }
+        Destroy(this.gameObject);
+        
+        timeDethBigEnemy = 0f;
+       
+    }
+
+    private void Start()
+    {
+        CountBigEnemy = 0;
+        CountBigEnemy = 0;
+    }
+
     public void FixedUpdate()
     {
-        UpdateGoal();
-        print(goalKill);
-        if (countPowerUp < 0)
+        if (_countPowerUp < 0)
         {
-            countPowerUp = 0;
+            _countPowerUp = 0;
         }
 
-        if (countCrystal < 0)
+        if (_countCrystal < 0)
         {
-            countCrystal = 0;
+            _countCrystal = 0;
         }
 
-        if (countEnemy < _maxCountEnemyOnScreen && _timeCreate < Time.time && _startCreateEnemys < Time.time)
+        if (CountEnemy < _maxCountEnemyOnScreen && TimeCreate < Time.timeSinceLevelLoad && _startCreateEnemys < Time.timeSinceLevelLoad)
         {
             SpawnEnemy();
+
         }
-        /*if (countEnemy < _maxCountBigEnemy)
+        if (CountBigEnemy < _maxCountBigEnemy && timeDethBigEnemy < Time.timeSinceLevelLoad && _startCreateBigEnemys < Time.timeSinceLevelLoad)
         {
             SpawnBigEnemy();
-        }*/
+        }
+
     }
 
     public void CreatePowerUp(GameObject gameObject, Transform transform)
     {
         int rand = Random.Range(0, 11);
-        if (8 < rand && countPowerUp < 1)
+        if (8 < rand && _countPowerUp < 1)
         {
             int indInArray = 59;
-            indInArray = Random.Range(0, arrayPowerUP.Length);
-            GameObject powerUpGO = Instantiate(arrayPowerUP[indInArray]);
+            indInArray = Random.Range(0, m_arrayPowerUP.Length);
+            GameObject powerUpGO = Instantiate(m_arrayPowerUP[indInArray]);
             powerUpGO.transform.position = transform.position;
-            countPowerUp++;            
+            _countPowerUp++;
         }
-    }    
+    }
 
     public void CreateCrystal(GameObject gameObject, Transform transform)
     {
-        if (countCrystal < 1)
+        if (_countCrystal < 1)
         {
-            countCrystal++;
+            _countCrystal++;
             GameObject powerUpGO = Instantiate(crystal);
             powerUpGO.transform.position = transform.position;
-            powerUpGO.transform.position += new Vector3(1, 0, 0);            
-        }        
+            powerUpGO.transform.position += new Vector3(1, 0, 0);
+        }
     }
-    
+
     public void CreateMedKit(GameObject gameObject, Transform transform)
     {
         int rand = Random.Range(0, 11);
-        if (8 < rand && countPowerUp < 1)
+        if (8 < rand && _countPowerUp < 1)
         {
             GameObject powerUpGO = Instantiate(medKit);
             powerUpGO.transform.position = transform.position;
             powerUpGO.transform.position += new Vector3(1, 0, 0);
-            countPowerUp++;            
+            _countPowerUp++;
         }
     }
 
     public void SpawnEnemy()
     {
-       
-        int indInArray = Random.Range(0, enemy.Length);
-        _enemySpawner = Instantiate(enemy[indInArray]);
+
+        int indInArray = Random.Range(0, m_enemy.Length);
+        _enemySpawner = Instantiate(m_enemy[indInArray]);
         Transform posEnemy = _enemySpawner.GetComponent<Transform>();
         posEnemy.transform.position = new Vector3(Random.Range(-10, 10), Random.Range(25, 45), 0);
-        
-        _timeCreate = Time.time + plusTimeForEnemy;
-        countEnemy++;       
+
+        TimeCreate = Time.timeSinceLevelLoad + _plusTimeForEnemy;
+        CountEnemy++;
     }
 
     public void SpawnBigEnemy()
     {
         int indInArray = 59;
-        indInArray = Random.Range(0, bigEnemy.Length);
-        _enemySpawner = Instantiate(bigEnemy[indInArray]);
-        countBigEnemy++;
+        indInArray = Random.Range(0, m_bigEnemy.Length);
+        _enemySpawner = Instantiate(m_bigEnemy[indInArray]);
+        CountBigEnemy++;
         countPartBigEnemy = 0;
         Transform posEnemy = _enemySpawner.GetComponent<Transform>();
         posEnemy.transform.position = new Vector3(0, 25, 0);
@@ -166,22 +163,13 @@ public class GameObjectManager : MonoBehaviour
 
     public void DestroyGO(GameObject gameObject)
     {
-        Destroy(gameObject);
         switch (gameObject.tag)
         {
-            case "Enemy": countEnemy--; break;
-            case "BigEnemy": countBigEnemy--; break;
-            case "PowerUp": countPowerUp--; break;
-            case "Crystal": countCrystal--; break;
+            case "Enemy": CountEnemy--; break;
+            case "BigEnemy": CountBigEnemy--; break;
+            case "PowerUp": _countPowerUp--; break;
+            case "Crystal": _countCrystal--; break;
         }
-
+        Destroy(gameObject);
     }
-
-    
-
-
-
-
-
-
 }

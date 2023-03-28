@@ -18,10 +18,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainScene");
     }
-
-   
-
-
+       
     public void GoPlay()
     {
         SceneManager.LoadScene("MainScene");
