@@ -126,18 +126,15 @@ public class PlayerController : MonoBehaviour
                 break;
             case "HP":
                 health++;
-                Destroy(other);
                 GameObjectManager.GOM.DestroyGO(other);
                 break;
             case "PowerUp":
                 timerForModForFire = Time.time + timeActiveFireMod;
-                activeSpeedModForFire = true;
-                Destroy(other);
+                activeSpeedModForFire = true;                
                 GameObjectManager.GOM.DestroyGO(other);
                 break;
             case "Weapon":
-                countWepons++;
-                Destroy(other);
+                countWepons++;                
                 if (countWepons == 1)
                 {
                     pointCPLeft.SetActive(true);
@@ -150,8 +147,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case "Crystal":
                 _score.UpdateCrystal(10);
-                GameObjectManager.GOM.DestroyGO(other);
-                Destroy(other);                
+                GameObjectManager.GOM.DestroyGO(other);                            
                 break;
         }
     }

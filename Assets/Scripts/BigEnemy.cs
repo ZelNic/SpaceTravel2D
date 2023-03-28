@@ -68,10 +68,10 @@ public class BigEnemy : MonoBehaviour
     }
     public void DestroyEnemy()
     {
-        if (GameObjectManager.GOM.countPartBigEnemy == 5)
+        if (GameObjectManager.GOM.CountPartBigEnemy == 5)
         {
             Destroy(gameObject);
-            GameObjectManager.GOM.timeDethBigEnemy = Time.timeSinceLevelLoad + 30f;
+            GameObjectManager.GOM.TimeDethBigEnemy = Time.timeSinceLevelLoad + 30f;
             GameObjectManager.GOM.CreateCrystal(gameObject, transform);
             GameObjectManager.GOM.DestroyGO(gameObject);
         }

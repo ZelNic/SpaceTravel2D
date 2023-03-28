@@ -137,11 +137,5 @@ MonoBehaviour:
   _startCreateEnemys: 5
   _startCreateBigEnemys: 30
   _chanceCreatePowerUp: 9
-  _plusTimeForEnemy: 0
-  _plusTimeForBigEnemy: 0
-  _countBigEnemy: 0
-  countPartBigEnemy: 0
-  _countPowerUp: 0
-  _countCrystal: 0
-  _countEnemy: 0
-  timeDethBigEnemy: 0
+  _plusTimeForEnemy: 0.5
+  _plusTimeForBigEnemy: 30

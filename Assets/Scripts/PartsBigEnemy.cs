@@ -52,7 +52,7 @@ public class PartsBigEnemy : MonoBehaviour
 
     public void DestroyPart()
     {
-        GameObjectManager.GOM.countPartBigEnemy++;
+        GameObjectManager.GOM.CountPartBigEnemy++;
         Destroy(gameObject);
     }
 }

@@ -23,8 +23,9 @@ public class Enemy : MonoBehaviour
     public bool createPowerUp;
     public bool createCrystal;
     public bool createMedKit;
+    public bool createWeapon;
     
-    private bool _destroyed = false;
+    
     
 
     
@@ -79,10 +80,14 @@ public class Enemy : MonoBehaviour
         {
             GameObjectManager.GOM.CreatePowerUp(gameObject, transform);
         }
-        if(createPowerUp == true)
+        if(createWeapon == true)
         {
-            GameObjectManager.GOM.CreatePowerUp(gameObject, transform);
-        }              
+            GameObjectManager.GOM.CreateWeapon(gameObject, transform);
+        }
+        if (createMedKit == true)
+        {
+            GameObjectManager.GOM.CreateMedKit(gameObject, transform);
+        }
         GameObjectManager.GOM.DestroyGO(gameObject);        
     }
 

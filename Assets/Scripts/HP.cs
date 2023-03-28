@@ -16,7 +16,7 @@ public class HP : MonoBehaviour
     private void Awake()
     {
         _boundsCheck = GetComponent<BoundsCheck>();
-        startLive = Time.time + timeLive;
+        startLive = Time.timeSinceLevelLoad + timeLive;
     }   
 
     private void FixedUpdate()
@@ -29,18 +29,15 @@ public class HP : MonoBehaviour
         {
             if(medKit == true)
             {
-                GameObjectManager.GOM.DestroyGO(gameObject);
-                Destroy(gameObject);
+                GameObjectManager.GOM.DestroyGO(gameObject);                
             }
             if(crystal == true)
             {
-                GameObjectManager.GOM.DestroyGO(gameObject);
-                Destroy(gameObject);
+                GameObjectManager.GOM.DestroyGO(gameObject);                
             }
             if (powerUp == true) 
             {
-                GameObjectManager.GOM.DestroyGO(gameObject);
-                Destroy(gameObject);
+                GameObjectManager.GOM.DestroyGO(gameObject);               
             }          
             
         }

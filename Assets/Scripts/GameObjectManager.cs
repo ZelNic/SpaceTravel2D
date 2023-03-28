@@ -24,16 +24,76 @@ public class GameObjectManager : MonoBehaviour
     [SerializeField] private float _plusTimeForBigEnemy;
 
     private int _countBigEnemy;
-    public int countPartBigEnemy;
-
-    [SerializeField] private int _countPowerUp;
-    [SerializeField] private int _countCrystal;    
+    private int _countPowerUp;
+    private int _countCrystal;
+    private int _countMedKit;
+    private int _countWeapon;
     private int _countEnemy;
-    public float timeDethBigEnemy;
+    private float _timeDethBigEnemy;
+    private int _countPartBigEnemy;
+
+
+
+    public int CountPartBigEnemy
+    {
+        get { return _countPartBigEnemy; }
+        set { _countPartBigEnemy = value; }
+    }
+
+    public int CountCrystal
+    {
+        get { return _countCrystal; }
+        set
+        {
+            _countCrystal = value;
+            if (_countCrystal <= 0)
+            {
+                _countCrystal = 0;
+            }
+        }
+    }
+
+    public int CountPowerUp
+    {
+        get { return _countPowerUp; }
+        set
+        {
+            _countPowerUp = value;
+            if (_countPowerUp <= 0)
+            {
+                _countPowerUp = 0;
+            }
+        }
+    }
+
+    public int CountMedKit
+    {
+        get { return _countMedKit; }
+        set
+        {
+            _countMedKit = value;
+            if (_countMedKit <= 0)
+            {
+                _countMedKit = 0;
+            }
+        }
+    }
+
+    public int CountWeapon
+    {
+        get { return _countWeapon; }
+        set 
+        { _countWeapon = value; 
+            if (_countWeapon <= 0)
+            {
+                _countWeapon = 0;
+            }
+        }
+    }
 
     public int CountEnemy
     {
-        get { return _countEnemy = 0; }
+        get { return _countEnemy; }
         set
         {
             _countEnemy = value;
@@ -50,12 +110,17 @@ public class GameObjectManager : MonoBehaviour
         set { _countBigEnemy = value; }
     }
 
-     public float TimeCreate
+    public float TimeCreate
     {
-        get { return _timeCreate = 0f; }
+        get { return _timeCreate; }
         set { _timeCreate = value; }
     }
 
+    public float TimeDethBigEnemy
+    {
+        get { return _timeDethBigEnemy; }
+        set { _timeDethBigEnemy = value; }
+    }
 
     private void Awake()
     {
@@ -66,59 +131,51 @@ public class GameObjectManager : MonoBehaviour
             return;
         }
         Destroy(this.gameObject);
-        
-        timeDethBigEnemy = 0f;
-       
-    }
 
-    private void Start()
-    {
-        CountBigEnemy = 0;
-        CountBigEnemy = 0;
+
+
     }
 
     public void FixedUpdate()
-    {
-        if (_countPowerUp < 0)
-        {
-            _countPowerUp = 0;
-        }
-
-        if (_countCrystal < 0)
-        {
-            _countCrystal = 0;
-        }
-
+    {   
         if (CountEnemy < _maxCountEnemyOnScreen && TimeCreate < Time.timeSinceLevelLoad && _startCreateEnemys < Time.timeSinceLevelLoad)
         {
             SpawnEnemy();
 
         }
-        if (CountBigEnemy < _maxCountBigEnemy && timeDethBigEnemy < Time.timeSinceLevelLoad && _startCreateBigEnemys < Time.timeSinceLevelLoad)
+        if (CountBigEnemy < _maxCountBigEnemy && TimeDethBigEnemy < Time.timeSinceLevelLoad && _startCreateBigEnemys < Time.timeSinceLevelLoad)
         {
             SpawnBigEnemy();
         }
-
     }
 
     public void CreatePowerUp(GameObject gameObject, Transform transform)
     {
         int rand = Random.Range(0, 11);
-        if (8 < rand && _countPowerUp < 1)
+        if (8 < rand && CountPowerUp < 1)
         {
-            int indInArray = 59;
-            indInArray = Random.Range(0, m_arrayPowerUP.Length);
-            GameObject powerUpGO = Instantiate(m_arrayPowerUP[indInArray]);
+            GameObject powerUpGO = Instantiate(m_arrayPowerUP[1]);
             powerUpGO.transform.position = transform.position;
-            _countPowerUp++;
+            CountPowerUp++;
+        }
+    }
+
+    public void CreateWeapon(GameObject gameObject, Transform transform)
+    {
+        int rand = Random.Range(0, 11);
+        if (8 < rand && CountWeapon < 1)
+        {
+            GameObject powerUpGO = Instantiate(m_arrayPowerUP[2]);
+            powerUpGO.transform.position = transform.position;
+            CountWeapon++;
         }
     }
 
     public void CreateCrystal(GameObject gameObject, Transform transform)
     {
-        if (_countCrystal < 1)
+        if (CountCrystal < 1)
         {
-            _countCrystal++;
+            CountCrystal++;
             GameObject powerUpGO = Instantiate(crystal);
             powerUpGO.transform.position = transform.position;
             powerUpGO.transform.position += new Vector3(1, 0, 0);
@@ -128,12 +185,12 @@ public class GameObjectManager : MonoBehaviour
     public void CreateMedKit(GameObject gameObject, Transform transform)
     {
         int rand = Random.Range(0, 11);
-        if (8 < rand && _countPowerUp < 1)
+        if (8 < rand && CountPowerUp < 1)
         {
             GameObject powerUpGO = Instantiate(medKit);
             powerUpGO.transform.position = transform.position;
             powerUpGO.transform.position += new Vector3(1, 0, 0);
-            _countPowerUp++;
+            CountMedKit++;
         }
     }
 
@@ -155,7 +212,7 @@ public class GameObjectManager : MonoBehaviour
         indInArray = Random.Range(0, m_bigEnemy.Length);
         _enemySpawner = Instantiate(m_bigEnemy[indInArray]);
         CountBigEnemy++;
-        countPartBigEnemy = 0;
+        _countPartBigEnemy = 0;
         Transform posEnemy = _enemySpawner.GetComponent<Transform>();
         posEnemy.transform.position = new Vector3(0, 25, 0);
         return;
@@ -167,8 +224,10 @@ public class GameObjectManager : MonoBehaviour
         {
             case "Enemy": CountEnemy--; break;
             case "BigEnemy": CountBigEnemy--; break;
-            case "PowerUp": _countPowerUp--; break;
-            case "Crystal": _countCrystal--; break;
+            case "PowerUp": CountPowerUp--; break;
+            case "Crystal": CountCrystal--; break;
+            case "HP": CountMedKit--; break;
+            case "Weapon": CountWeapon--; break;
         }
         Destroy(gameObject);
     }
