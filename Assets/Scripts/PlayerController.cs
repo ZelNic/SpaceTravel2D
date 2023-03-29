@@ -111,16 +111,15 @@ public class PlayerController : MonoBehaviour
             case "Enemy":
                 health--;
                 _takingDamage.ChangeColorTakingDamage();
-                Enemy _enemy = other.GetComponent<Enemy>();
-                _score.UpdateScore(10);
                 GameObjectManager.GOM.DestroyGO(other);
+                _score.UpdateScore(10);
                 break;
             case "PartBigEnemy":
                 health--;
                 _takingDamage.ChangeColorTakingDamage();
                 PartsBigEnemy _pbe = other.GetComponent<PartsBigEnemy>();
-                _score.UpdateScore(10);
                 _pbe.DestroyPart();
+                _score.UpdateScore(10);
                 break;
             case "ProjectileEnemy":
                 health--;
@@ -149,11 +148,18 @@ public class PlayerController : MonoBehaviour
                 GameObjectManager.GOM.DestroyGO(other);
                 break;
             case "Crystal":
-                _score.UpdateCrystal(10);
                 GameObjectManager.GOM.DestroyGO(other);
+                _score.UpdateCrystal(10);
+                break;
+            case "Asteroid":
+                health--;
+                _takingDamage.ChangeColorTakingDamage();
+                GameObjectManager.GOM.DestroyGO(other);
+                _score.UpdateScore(10);
                 break;
         }
     }
+
 
     private void MovePlayer()
     {

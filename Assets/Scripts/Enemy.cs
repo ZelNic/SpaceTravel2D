@@ -23,37 +23,7 @@ public class Enemy : MonoBehaviour
     public bool createPowerUp;
     public bool createCrystal;
     public bool createMedKit;
-    public bool createWeapon;
-    
-    
-    
-
-    
-
-    private void Update()
-    {
-        PositionCheck();
-        MoveEnemy();
-    }
-
-    private void PositionCheck()
-    {
-        if (_boundsCheck.offDown)
-        {
-            DestroyEnemy();
-        }
-    }
-
-    public virtual void MoveEnemy()
-    {
-        _rb.position -= new Vector2(0, speed * Time.deltaTime);
-
-        if(rotationEnemy == true)
-        {
-            transform.Rotate(Vector3.forward, speedRotation * Time.deltaTime, Space.Self);
-        }
-    }
-
+    public bool createWeapon;    
 
     public int health
     {
@@ -65,14 +35,34 @@ public class Enemy : MonoBehaviour
             if (_health < 0.5f)
             {
                 _score.UpdateScore(5);
-                DestroyEnemy();                
+                DestroyEnemy();
             }
         }
     }
-
-    public virtual void DestroyEnemy()
+    private void Update()
     {
-        if(createCrystal == true)
+        PositionCheck();
+        MoveEnemy();
+    }
+    private void PositionCheck()
+    {
+        if (_boundsCheck.offDown)
+        {
+            DestroyEnemy();
+        }
+    }
+    public virtual void MoveEnemy()
+    {
+        _rb.position -= new Vector2(0, speed * Time.deltaTime);
+
+        if(rotationEnemy == true)
+        {
+            transform.Rotate(Vector3.forward, speedRotation * Time.deltaTime, Space.Self);
+        }
+    }
+    public virtual void DestroyEnemy()
+    {        
+        if (createCrystal == true)
         {
             GameObjectManager.GOM.CreateCrystal(gameObject, transform);
         }
@@ -87,8 +77,8 @@ public class Enemy : MonoBehaviour
         if (createMedKit == true)
         {
             GameObjectManager.GOM.CreateMedKit(gameObject, transform);
-        }
-        GameObjectManager.GOM.DestroyGO(gameObject);        
+        }        
+        GameObjectManager.GOM.DestroyGO(gameObject);            
     }
 
 

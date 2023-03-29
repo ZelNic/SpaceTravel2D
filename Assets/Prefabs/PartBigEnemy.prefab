@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6871975491935692990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 21}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,10 +76,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 8
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.514151, g: 1, b: 0.536864, a: 1}
+  m_Sprite: {fileID: 48316458, guid: e76aaaf51e73ea94395b4f97ff84b9f2, type: 3}
+  m_Color: {r: 0.6415094, g: 0.2269491, b: 0.2269491, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
@@ -100,9 +100,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.013519049, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.2976205
 --- !u!114 &3724381098125145965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,11 +116,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileEnemyPrefab: {fileID: 6204250229637705434, guid: f0e98a477e736854da04940150422188, type: 3}
-  _health: 5
+  _health: 10
   bigEnemy: {fileID: 7805503782268883601, guid: 0fcbb8104d03d5e49a7b227f368c3e22, type: 3}
   goScore: {fileID: 2418562503317077798, guid: 9d9e603ba1f25a544845bb344936c817, type: 3}
-  _proEnemy: {fileID: 0}
   goBE: {fileID: 7805503782268883601, guid: 0fcbb8104d03d5e49a7b227f368c3e22, type: 3}
+  _rotationEnemy: 1
+  _speedRotation: 40
 --- !u!114 &199016456304990576
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ TagManager:
   - HP
   - Weapon
   - Crystal
+  - Asteroid
   layers:
   - Default
   - TransparentFX
@@ -33,7 +34,7 @@ TagManager:
   - PowerUp
   - BigEnemy
   - partBigEnemy
-  - 
+  - Asteroid
   - 
   - 
   - 

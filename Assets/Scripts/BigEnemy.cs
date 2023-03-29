@@ -5,15 +5,13 @@ using UnityEngine;
 public class BigEnemy : MonoBehaviour
 {
     [SerializeField] private List<GameObject> part;
-    [SerializeField] private float _speedBigEnemy;   
+    [SerializeField] private float _speedBigEnemy;
     private BoundsCheck _boundsCheck;
-    private Rigidbody2D _rb;
-    public  int healthBigEnemy;
+    private Rigidbody2D _rb;    
     private Vector2 _halfHeight;
 
     private void Awake()
-    {   
-        healthBigEnemy = 5;
+    {        
         _boundsCheck = GetComponent<BoundsCheck>();
         _rb = GetComponent<Rigidbody2D>();
     }
@@ -28,11 +26,8 @@ public class BigEnemy : MonoBehaviour
         PositionCheck();
         MoveEnemy();
         UpdateHealthBigEnemy();
-
-        
-
     }
-        
+
     private void PositionCheck()
     {
         if (_boundsCheck.offDown)
@@ -61,24 +56,22 @@ public class BigEnemy : MonoBehaviour
     }
     public void UpdateHealthBigEnemy()
     {
-        if (healthBigEnemy == 0)
+        if (GameObjectManager.GOM.CountPartBigEnemy == 5)
         {
             DestroyEnemy();
         }
     }
     public void DestroyEnemy()
     {
-        if (GameObjectManager.GOM.CountPartBigEnemy == 5)
-        {
-            Destroy(gameObject);
-            GameObjectManager.GOM.TimeDethBigEnemy = Time.timeSinceLevelLoad + 30f;
-            GameObjectManager.GOM.CreateCrystal(gameObject, transform);
-            GameObjectManager.GOM.DestroyGO(gameObject);
-        }
-        
+        GameObjectManager.GOM.TimeDethBigEnemy = Time.timeSinceLevelLoad + GameObjectManager.GOM.plusTimeForBigEnemy;
+        GameObjectManager.GOM.CreateCrystal(gameObject, transform);
+        GameObjectManager.GOM.CreateWeapon(gameObject, transform);
+        GameObjectManager.GOM.CountPartBigEnemy = 0;
+        GameObjectManager.GOM.DestroyGO(gameObject);
+               
     }
 
-   
+
 
 
 

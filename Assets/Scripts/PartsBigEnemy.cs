@@ -12,13 +12,16 @@ public class PartsBigEnemy : MonoBehaviour
     private GameObject _proEnemy;
     public GameObject goBE;
     private BigEnemy _be;
+    [SerializeField] private bool _rotationEnemy;
+    [SerializeField] private float _speedRotation;
+    private bool iDestroyed = false;
+
 
     private void Start()
     {
         _score = goScore.GetComponent<Score>();
         _takingDamage = GetComponent<TakingDamage>();
     }
-
     public int health
     {
         get { return _health; }
@@ -33,13 +36,11 @@ public class PartsBigEnemy : MonoBehaviour
             }
         }
     }
-
     public void FixedUpdate()
     {
         CreateProjectile();
+        Rotation();
     }
-
-
     public void CreateProjectile()
     {
         if (_timeCreateProjectile < Time.time)
@@ -49,10 +50,21 @@ public class PartsBigEnemy : MonoBehaviour
             _timeCreateProjectile = Time.time + Random.Range(2f, 5f);
         }
     }
-
+    public void Rotation()
+    {
+        if (_rotationEnemy == true)
+        {
+            transform.Rotate(Vector3.forward, _speedRotation * Time.deltaTime, Space.Self);
+        }
+    }
     public void DestroyPart()
     {
-        GameObjectManager.GOM.CountPartBigEnemy++;
-        Destroy(gameObject);
+        if (iDestroyed == false)
+        {
+            iDestroyed = true;
+            GameObjectManager.GOM.CountPartBigEnemy++;
+            Destroy(gameObject);
+        }
+
     }
 }

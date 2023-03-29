@@ -74,7 +74,6 @@ public class Score : MonoBehaviour
         textHighScore.text = hightScore.ToString();
         textCountCrystal.text = crystal.ToString();
 
-
        /* if (Input.GetKeyDown(KeyCode.Space))
         {
             PlayerPrefs.DeleteAll();

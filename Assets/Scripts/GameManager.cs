@@ -24,7 +24,9 @@ public class GameManager : MonoBehaviour
         GameObjectManager.GOM.CountWeapon = 0;
         GameObjectManager.GOM.TimeCreate = 0;
         GameObjectManager.GOM.TimeDethBigEnemy = 0;
-        GameObjectManager.GOM.CountPartBigEnemy = 0;        
+        GameObjectManager.GOM.CountPartBigEnemy = 0;
+        GameObjectManager.GOM.CountAsteroid = 0;
+        GameObjectManager.GOM.TimeCreateAsteroid = 0;
     }
 
     public void Restart()

@@ -21,7 +21,7 @@ public class GameObjectManager : MonoBehaviour
 
     private float _timeCreate;
     [SerializeField] private float _plusTimeForEnemy;
-    [SerializeField] private float _plusTimeForBigEnemy;
+    public float plusTimeForBigEnemy;
 
     private int _countBigEnemy;
     private int _countPowerUp;
@@ -31,9 +31,10 @@ public class GameObjectManager : MonoBehaviour
     private int _countEnemy;
     private float _timeDethBigEnemy;
     private int _countPartBigEnemy;
+    private int _countAsteroid;
+    private float _timeCreateAsteroid;
 
-
-
+    #region get set
     public int CountPartBigEnemy
     {
         get { return _countPartBigEnemy; }
@@ -114,23 +115,39 @@ public class GameObjectManager : MonoBehaviour
         get { return _timeDethBigEnemy; }
         set { _timeDethBigEnemy = value; }
     }
+    public float TimeCreateAsteroid
+    {
+        get { return _timeCreateAsteroid; }
+        set 
+        { 
+            _timeCreateAsteroid = value;
+        }
+    }
+    public int CountAsteroid
+    {
+        get { return _countAsteroid; }
+        set 
+        {
+            _countAsteroid = value; 
+            if( _countAsteroid < 0)
+            { _countAsteroid = 0;}
+        }
+    }
+
+
+    #endregion
+
 
     private void Awake()
-    {       
+    {
         GOM = this;
     }
 
     public void FixedUpdate()
     {
-        if (CountEnemy < _maxCountEnemyOnScreen && TimeCreate < Time.timeSinceLevelLoad && _startCreateEnemys < Time.timeSinceLevelLoad)
-        {
-            SpawnEnemy();
-
-        }
-        if (CountBigEnemy < _maxCountBigEnemy && TimeDethBigEnemy < Time.timeSinceLevelLoad && _startCreateBigEnemys < Time.timeSinceLevelLoad)
-        {
-            SpawnBigEnemy();
-        }
+        SpawnEnemy();
+        SpawnAsteroid();
+        SpawnBigEnemy();
     }
 
     public void CreatePowerUp(GameObject gameObject, Transform transform)
@@ -142,17 +159,18 @@ public class GameObjectManager : MonoBehaviour
             powerUpGO.transform.position = transform.position;
             CountPowerUp++;
         }
+        return;
     }
 
     public void CreateWeapon(GameObject gameObject, Transform transform)
-    {
-        int rand = Random.Range(0, 11);
-        if (8 < rand && CountWeapon < 1)
+    {        
+        if (CountWeapon <= 1)
         {
             GameObject powerUpGO = Instantiate(m_arrayPowerUP[2]);
             powerUpGO.transform.position = transform.position;
             CountWeapon++;
         }
+        return;
     }
 
     public void CreateCrystal(GameObject gameObject, Transform transform)
@@ -164,6 +182,7 @@ public class GameObjectManager : MonoBehaviour
             powerUpGO.transform.position = transform.position;
             powerUpGO.transform.position += new Vector3(1, 0, 0);
         }
+        return;
     }
 
     public void CreateMedKit(GameObject gameObject, Transform transform)
@@ -176,34 +195,55 @@ public class GameObjectManager : MonoBehaviour
             powerUpGO.transform.position += new Vector3(1, 0, 0);
             CountMedKit++;
         }
+        return;
     }
 
     public void SpawnEnemy()
     {
-
-        int indInArray = Random.Range(0, m_enemy.Length);
-        _enemySpawner = Instantiate(m_enemy[indInArray]);
-        Transform posEnemy = _enemySpawner.GetComponent<Transform>();
-        posEnemy.transform.position = new Vector3(Random.Range(-10, 10), Random.Range(25, 45), 0);
-
-        TimeCreate = Time.timeSinceLevelLoad + _plusTimeForEnemy;
-        CountEnemy++;
+        if (CountEnemy < _maxCountEnemyOnScreen && TimeCreate < Time.timeSinceLevelLoad && _startCreateEnemys < Time.timeSinceLevelLoad)
+        {
+            int indInArray = Random.Range(1, m_enemy.Length);
+            _enemySpawner = Instantiate(m_enemy[indInArray]);
+            Transform posEnemy = _enemySpawner.GetComponent<Transform>();
+            posEnemy.transform.position = new Vector3(Random.Range(-10, 10), Random.Range(25, 45), 0);
+            TimeCreate = Time.timeSinceLevelLoad + _plusTimeForEnemy;
+            CountEnemy++;
+        }
+        return;
     }
+
+    public void SpawnAsteroid()
+    {
+        if (CountAsteroid < 2 && TimeCreateAsteroid < Time.timeSinceLevelLoad)
+        {
+            _enemySpawner = Instantiate(m_enemy[0]);
+            Transform posEnemy = _enemySpawner.GetComponent<Transform>();
+            posEnemy.transform.position = new Vector3(Random.Range(-10, 10), Random.Range(25, 45), 0);
+            TimeCreateAsteroid = Time.timeSinceLevelLoad + 5f;
+            CountAsteroid++;
+        }
+        return;
+    }
+
 
     public void SpawnBigEnemy()
     {
-        int indInArray = 59;
-        indInArray = Random.Range(0, m_bigEnemy.Length);
-        _enemySpawner = Instantiate(m_bigEnemy[indInArray]);
-        CountBigEnemy++;
-        _countPartBigEnemy = 0;
-        Transform posEnemy = _enemySpawner.GetComponent<Transform>();
-        posEnemy.transform.position = new Vector3(0, 25, 0);
+        if (CountBigEnemy < _maxCountBigEnemy && TimeDethBigEnemy < Time.timeSinceLevelLoad && _startCreateBigEnemys < Time.timeSinceLevelLoad)
+        {
+            _countPartBigEnemy = 0;
+            CountBigEnemy++;
+            int indInArray = 59;
+            indInArray = Random.Range(0, m_bigEnemy.Length);
+            _enemySpawner = Instantiate(m_bigEnemy[indInArray]);
+            Transform posEnemy = _enemySpawner.GetComponent<Transform>();
+            posEnemy.transform.position = new Vector3(0, 25, 0);            
+        }
         return;
     }
 
     public void DestroyGO(GameObject gameObject)
     {
+        Destroy(gameObject);
         switch (gameObject.tag)
         {
             case "Enemy": CountEnemy--; break;
@@ -212,7 +252,8 @@ public class GameObjectManager : MonoBehaviour
             case "Crystal": CountCrystal--; break;
             case "HP": CountMedKit--; break;
             case "Weapon": CountWeapon--; break;
+            case "Asteroid": CountAsteroid--; break;
         }
-        Destroy(gameObject);
+        
     }
 }

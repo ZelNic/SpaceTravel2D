@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 280557187}
   m_Layer: 15
   m_Name: Weapon
-  m_TagString: PowerUp
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 204968543, guid: adb19d89c48d3024eacd1c584131e8b2, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: -1156527914, guid: e76aaaf51e73ea94395b4f97ff84b9f2, type: 3}
+  m_Color: {r: 0.9622642, g: 0.54055434, b: 0.040850822, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -137,6 +137,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: -0.0067312717, y: 0.00673151}
+  m_Size: {x: 1.201941, y: 1.2595491}
   m_Direction: 0
