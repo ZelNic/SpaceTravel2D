@@ -41,21 +41,21 @@ public class ProjectileHero : MonoBehaviour
         if (other.tag == "Enemy")
         {
             Enemy _enemy = other.GetComponent<Enemy>();
-            _enemy.health -= 1;
+            _enemy.health -= 1;            
             Destroy(this.gameObject);
         }
 
         if (other.tag == "PartBigEnemy")
         {
             PartsBigEnemy _pbe = other.GetComponent<PartsBigEnemy>();
-            _pbe.health -= 1;
+            _pbe.health -= 1;            
             Destroy(this.gameObject);
         }
 
         if (other.tag == "Asteroid")
         {
             Enemy _enemy = other.GetComponent<Enemy>();
-            _enemy.health -= 1;
+            _enemy.health -= 1;            
             Destroy(this.gameObject);
         }
 

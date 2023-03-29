@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public GameObject pointCreateProjectile;
     public GameObject pointCPLeft;
     public GameObject pointCPRight;
-    private int countWepons;
+    private int _countWepons;
 
 
     private Rigidbody2D _rb;
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         _currentHealth = _maxHealth;
         _rb.position = Vector2.zero;
         defultRateOfFire = _rateOfFire;
-        countWepons = 0;
+        _countWepons = 0;
     }
 
     private void FixedUpdate()
@@ -56,7 +56,26 @@ public class PlayerController : MonoBehaviour
         BonusSpeedFire();
     }
 
-    public int health
+    public int CountWepons
+    {
+        get { return _countWepons; }
+        set 
+        {
+            _countWepons = value;
+            if(_countWepons < 0)
+            {
+                _countWepons = 0;
+            }
+            if( _countWepons > 2)
+            {
+                _countWepons = 2;
+            }
+        
+        }
+    }
+
+
+    public int Health
     {
         get { return _currentHealth; }
         set
@@ -73,7 +92,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    public float rateOfFire
+    public float RateOfFire
     {
         get { return _rateOfFire; }
         set
@@ -97,7 +116,7 @@ public class PlayerController : MonoBehaviour
         }
         if (activeSpeedModForFire == true)
         {
-            rateOfFire = 0.2f;
+            RateOfFire = 0.2f;
         }
     }
 
@@ -109,25 +128,25 @@ public class PlayerController : MonoBehaviour
         switch (other.tag)
         {
             case "Enemy":
-                health--;
+                Health--;
                 _takingDamage.ChangeColorTakingDamage();
                 GameObjectManager.GOM.DestroyGO(other);
                 _score.UpdateScore(10);
                 break;
             case "PartBigEnemy":
-                health--;
+                Health--;
                 _takingDamage.ChangeColorTakingDamage();
                 PartsBigEnemy _pbe = other.GetComponent<PartsBigEnemy>();
                 _pbe.DestroyPart();
                 _score.UpdateScore(10);
                 break;
             case "ProjectileEnemy":
-                health--;
+                Health--;
                 _takingDamage.ChangeColorTakingDamage();
                 Destroy(other);
                 break;
             case "HP":
-                health++;
+                Health++;
                 GameObjectManager.GOM.DestroyGO(other);
                 break;
             case "PowerUp":
@@ -136,12 +155,12 @@ public class PlayerController : MonoBehaviour
                 GameObjectManager.GOM.DestroyGO(other);
                 break;
             case "Weapon":
-                countWepons++;
-                if (countWepons == 1)
+                CountWepons++;
+                if (CountWepons == 1)
                 {
                     pointCPLeft.SetActive(true);
                 }
-                if (countWepons == 2)
+                if (CountWepons == 2)
                 {
                     pointCPRight.SetActive(true);
                 }
@@ -152,7 +171,7 @@ public class PlayerController : MonoBehaviour
                 _score.UpdateCrystal(10);
                 break;
             case "Asteroid":
-                health--;
+                Health--;
                 _takingDamage.ChangeColorTakingDamage();
                 GameObjectManager.GOM.DestroyGO(other);
                 _score.UpdateScore(10);
@@ -169,29 +188,22 @@ public class PlayerController : MonoBehaviour
 
         float xAxis = pos3DMouse.x;
         float yAxis = pos3DMouse.y;
-
-
         Vector3 currentPos = transform.position;
-
         Vector3 targetPos = new Vector3(xAxis, yAxis + 3f, currentPos.z);
-
-
         float movingTime = 0.5f;
         transform.position = Vector3.Lerp(currentPos, targetPos, movingTime);
-
-
     }
 
     private void UpdateHealthBar()
     {
-        _healthBar.UpdateHealthBar(_maxHealth, health);
+        _healthBar.UpdateHealthBar(_maxHealth, Health);
     }
 
     private void CreateProjectileHero()
     {
         if (_timeCreate < Time.time)
         {
-            _timeCreate = Time.time + rateOfFire;
+            _timeCreate = Time.time + RateOfFire;
             GameObject proje = Instantiate(projectileHero, pointCreateProjectile.transform);
             proje.transform.position = pointCreateProjectile.transform.position;
 

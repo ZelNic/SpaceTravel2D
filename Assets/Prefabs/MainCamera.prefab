@@ -4950,5 +4950,5 @@ MonoBehaviour:
   _startCreateEnemys: 5
   _startCreateBigEnemys: 30
   _chanceCreatePowerUp: 9
-  _plusTimeForEnemy: 0.8
-  plusTimeForBigEnemy: 45
+  _plusTimeForEnemy: 0.4
+  plusTimeForBigEnemy: 30

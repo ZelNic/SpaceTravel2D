@@ -278,10 +278,38 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1918673209, guid: bf9d070a8ecd9ed4b892f8e038640033, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918673209, guid: bf9d070a8ecd9ed4b892f8e038640033, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918673209, guid: bf9d070a8ecd9ed4b892f8e038640033, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918673209, guid: bf9d070a8ecd9ed4b892f8e038640033, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918673209, guid: bf9d070a8ecd9ed4b892f8e038640033, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918673209, guid: bf9d070a8ecd9ed4b892f8e038640033, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 107
+      objectReference: {fileID: 0}
     - target: {fileID: 630521059909310978, guid: bf9d070a8ecd9ed4b892f8e038640033, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 159815689}
+    - target: {fileID: 630521059909310979, guid: bf9d070a8ecd9ed4b892f8e038640033, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -132
+      objectReference: {fileID: 0}
     - target: {fileID: 630521061044772196, guid: bf9d070a8ecd9ed4b892f8e038640033, type: 3}
       propertyPath: m_Camera
       value: 
@@ -576,7 +604,7 @@ PrefabInstance:
       objectReference: {fileID: 347162831}
     - target: {fileID: 3967073270061745093, guid: 1849612c4118b80418eb5dc98a03ec2c, type: 3}
       propertyPath: _maxHealth
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3967073270061745093, guid: 1849612c4118b80418eb5dc98a03ec2c, type: 3}
       propertyPath: gameObjectManager

@@ -15,7 +15,7 @@ public class Score : MonoBehaviour
     [SerializeField] private Text textCountCrystal;
     private int _crystal;
 
-    public int crystal
+    public int Crystal
     {
         get { return _crystal; }
         set 
@@ -25,7 +25,7 @@ public class Score : MonoBehaviour
     }
         
 
-    public int hightScore
+    public int HightScore
     {
         get { return _hightScore; }
         set
@@ -33,12 +33,12 @@ public class Score : MonoBehaviour
             _hightScore = value;
         }
     }
-    public static int score
+    public static int ScoreGS
     {
         get { return _score; }
         set
         {
-            _score = value;
+             _score = value;
         }
     }
 
@@ -49,30 +49,30 @@ public class Score : MonoBehaviour
                 
         if (PlayerPrefs.HasKey("hightScore"))
         {
-            hightScore = PlayerPrefs.GetInt("hightScore", hightScore);
-            textHighScore.text = hightScore.ToString();
+            HightScore = PlayerPrefs.GetInt("hightScore", HightScore);
+            textHighScore.text = HightScore.ToString();
         }
 
         if (PlayerPrefs.HasKey("Crystal"))
         {
-            crystal = PlayerPrefs.GetInt("Crystal", crystal);
-            textCountCrystal.text = crystal.ToString();
+            Crystal = PlayerPrefs.GetInt("Crystal", Crystal);
+            textCountCrystal.text = Crystal.ToString();
         }       
 
     }
 
     public void Update()
     {
-        textScore.text = "s: " + score.ToString();
+        textScore.text = "s: " + ScoreGS.ToString();
         
-        if (score > hightScore)
+        if (ScoreGS > HightScore)
         {
-            hightScore = score;
-            PlayerPrefs.SetInt("hightScore", hightScore);
+            HightScore = ScoreGS;
+            PlayerPrefs.SetInt("hightScore", HightScore);
             PlayerPrefs.Save();            
         }
-        textHighScore.text = hightScore.ToString();
-        textCountCrystal.text = crystal.ToString();
+        textHighScore.text = HightScore.ToString();
+        textCountCrystal.text = Crystal.ToString();
 
        /* if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -83,13 +83,17 @@ public class Score : MonoBehaviour
 
     public void UpdateScore(int value)
     {
-        score += value;       
+        if(value > 102)
+        {
+            return;
+        }
+        else ScoreGS += value;       
     }
 
     public void UpdateCrystal(int value)
     {
-        crystal += value;
-        PlayerPrefs.SetInt("Crystal", crystal);
+        Crystal += value;
+        PlayerPrefs.SetInt("Crystal", Crystal);
         PlayerPrefs.Save();
     }
 

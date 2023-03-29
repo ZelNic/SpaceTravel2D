@@ -77,8 +77,9 @@ public class Enemy : MonoBehaviour
         if (createMedKit == true)
         {
             GameObjectManager.GOM.CreateMedKit(gameObject, transform);
-        }        
-        GameObjectManager.GOM.DestroyGO(gameObject);            
+        } 
+        GameObjectManager.GOM.DestroyGO(gameObject);    
+        
     }
 
 

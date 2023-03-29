@@ -7,12 +7,6 @@ public class HP : MonoBehaviour
     private float timeLive = 5f;
     private float startLive;
 
-    public bool powerUp;
-    public bool crystal;
-    public bool medKit;
-
-
-
     private void Awake()
     {
         _boundsCheck = GetComponent<BoundsCheck>();
@@ -24,24 +18,10 @@ public class HP : MonoBehaviour
         transform.Rotate(Vector3.forward, speed * Time.deltaTime, Space.Self);
         transform.position -= new Vector3(0, 2 * Time.deltaTime);
 
-
         if (_boundsCheck.offDown || startLive < Time.timeSinceLevelLoad)
         {
-            if(medKit == true)
-            {
-                GameObjectManager.GOM.DestroyGO(gameObject);                
-            }
-            if(crystal == true)
-            {
-                GameObjectManager.GOM.DestroyGO(gameObject);                
-            }
-            if (powerUp == true) 
-            {
-                GameObjectManager.GOM.DestroyGO(gameObject);               
-            }          
-            
+            GameObjectManager.GOM.DestroyGO(gameObject);
         }
-
     }
 
 }

@@ -29,7 +29,7 @@ public class PartsBigEnemy : MonoBehaviour
         {
             _health = value;
             _takingDamage.ChangeColorTakingDamage();
-            if (_health < 0f)
+            if (_health <= 0)
             {
                 _score.UpdateScore(5);
                 DestroyPart();
@@ -61,10 +61,8 @@ public class PartsBigEnemy : MonoBehaviour
     {
         if (iDestroyed == false)
         {
-            iDestroyed = true;
-            GameObjectManager.GOM.CountPartBigEnemy++;
-            Destroy(gameObject);
+            iDestroyed = true;            
+            GameObjectManager.GOM.DestroyGO(gameObject);
         }
-
     }
 }

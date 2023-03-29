@@ -248,12 +248,13 @@ public class GameObjectManager : MonoBehaviour
         {
             case "Enemy": CountEnemy--; break;
             case "BigEnemy": CountBigEnemy--; break;
+            case "PartBigEnemy": CountPartBigEnemy++; break;
             case "PowerUp": CountPowerUp--; break;
             case "Crystal": CountCrystal--; break;
             case "HP": CountMedKit--; break;
             case "Weapon": CountWeapon--; break;
             case "Asteroid": CountAsteroid--; break;
-        }
-        
+        }        
     }
+    
 }
