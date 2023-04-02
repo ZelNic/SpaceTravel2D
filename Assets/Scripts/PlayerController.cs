@@ -54,23 +54,38 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
         CreateProjectileHero();
         BonusSpeedFire();
+        IGetUWeapons();
     }
+
+    private void IGetUWeapons()
+    {
+        if (GameObjectManager.GOM.CountWeapon == 1)
+        {
+            pointCPLeft.SetActive(true);
+        }
+        if (GameObjectManager.GOM.CountWeapon == 2)
+        {
+            pointCPRight.SetActive(true);
+        }
+
+    }
+
 
     public int CountWepons
     {
         get { return _countWepons; }
-        set 
+        set
         {
             _countWepons = value;
-            if(_countWepons < 0)
+            if (_countWepons < 0)
             {
                 _countWepons = 0;
             }
-            if( _countWepons > 2)
+            if (_countWepons > 2)
             {
                 _countWepons = 2;
             }
-        
+
         }
     }
 
@@ -152,18 +167,6 @@ public class PlayerController : MonoBehaviour
             case "PowerUp":
                 timerForModForFire = Time.time + timeActiveFireMod;
                 activeSpeedModForFire = true;
-                GameObjectManager.GOM.DestroyGO(other);
-                break;
-            case "Weapon":
-                CountWepons++;
-                if (CountWepons == 1)
-                {
-                    pointCPLeft.SetActive(true);
-                }
-                if (CountWepons == 2)
-                {
-                    pointCPRight.SetActive(true);
-                }
                 GameObjectManager.GOM.DestroyGO(other);
                 break;
             case "Crystal":

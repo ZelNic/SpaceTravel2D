@@ -9,7 +9,8 @@ public class GameObjectManager : MonoBehaviour
     [SerializeField] private GameObject[] m_bigEnemy;
     [SerializeField] private GameObject[] m_arrayPowerUP;
     [SerializeField] private GameObject crystal;
-    [SerializeField] private GameObject medKit;
+    [SerializeField] private GameObject medKit;    
+    [SerializeField] private BoundsCheck _boundsCheck;
 
     [Header("Set in Inspector")]
     [SerializeField] private int _maxCountEnemyOnScreen;
@@ -33,8 +34,19 @@ public class GameObjectManager : MonoBehaviour
     private int _countPartBigEnemy;
     private int _countAsteroid;
     private float _timeCreateAsteroid;
+    private int _countWeaponsPlayer;
+
 
     #region get set
+
+    public int CountWeaponsPlayer
+    {
+        get { return _countWeaponsPlayer; }
+        set { _countWeaponsPlayer = value; }
+    }
+
+
+
     public int CountPartBigEnemy
     {
         get { return _countPartBigEnemy; }
@@ -141,6 +153,7 @@ public class GameObjectManager : MonoBehaviour
     private void Awake()
     {
         GOM = this;
+        _boundsCheck = GetComponent<BoundsCheck>();
     }
 
     public void FixedUpdate()
@@ -205,7 +218,7 @@ public class GameObjectManager : MonoBehaviour
             int indInArray = Random.Range(1, m_enemy.Length);
             _enemySpawner = Instantiate(m_enemy[indInArray]);
             Transform posEnemy = _enemySpawner.GetComponent<Transform>();
-            posEnemy.transform.position = new Vector3(Random.Range(-10, 10), Random.Range(25, 45), 0);
+            posEnemy.transform.position = new Vector3(Random.Range(-_boundsCheck.camWidth, _boundsCheck.camWidth), Random.Range(25, 45), 0);
             TimeCreate = Time.timeSinceLevelLoad + _plusTimeForEnemy;
             CountEnemy++;
         }
@@ -218,7 +231,7 @@ public class GameObjectManager : MonoBehaviour
         {
             _enemySpawner = Instantiate(m_enemy[0]);
             Transform posEnemy = _enemySpawner.GetComponent<Transform>();
-            posEnemy.transform.position = new Vector3(Random.Range(-10, 10), Random.Range(25, 45), 0);
+            posEnemy.transform.position = new Vector3(Random.Range(-_boundsCheck.camWidth, _boundsCheck.camWidth), Random.Range(25, 45), 0);
             TimeCreateAsteroid = Time.timeSinceLevelLoad + 5f;
             CountAsteroid++;
         }
@@ -247,7 +260,7 @@ public class GameObjectManager : MonoBehaviour
         switch (gameObject.tag)
         {
             case "Enemy": CountEnemy--; break;
-            case "BigEnemy": CountBigEnemy--; break;
+            case "BigEnemy": CountBigEnemy--; CountWeapon++; break;
             case "PartBigEnemy": CountPartBigEnemy++; break;
             case "PowerUp": CountPowerUp--; break;
             case "Crystal": CountCrystal--; break;
