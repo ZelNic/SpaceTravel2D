@@ -37,27 +37,32 @@ public class ProjectileHero : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject other = collision.gameObject;
-        
-        if (other.tag == "Enemy")
-        {
-            Enemy _enemy = other.GetComponent<Enemy>();
-            _enemy.health -= 1;            
-            Destroy(this.gameObject);
-        }
 
-        if (other.tag == "PartBigEnemy")
-        {
-            PartsBigEnemy _pbe = other.GetComponent<PartsBigEnemy>();
-            _pbe.health -= 1;            
-            Destroy(this.gameObject);
-        }
 
-        if (other.tag == "Asteroid")
+        switch (other.tag)
         {
-            Enemy _enemy = other.GetComponent<Enemy>();
-            _enemy.health -= 1;            
-            Destroy(this.gameObject);
-        }
+            case "EnemyWithWeapon":
+
+                PartsBigEnemy _pbeWithWeapon = other.GetComponent<PartsBigEnemy>();
+                _pbeWithWeapon.health -= 1;
+                Destroy(this.gameObject);
+                break;
+            case "Enemy":
+                Enemy _enemy = other.GetComponent<Enemy>();
+                _enemy.health -= 1;
+                Destroy(this.gameObject);
+                break;
+            case "PartBigEnemy":
+                PartsBigEnemy _pbe = other.GetComponent<PartsBigEnemy>();
+                _pbe.health -= 1;
+                Destroy(this.gameObject);
+                break;
+            case "Asteroid":
+                Enemy _astro = other.GetComponent<Enemy>();
+                _astro.health -= 1;
+                Destroy(this.gameObject);
+                break;
+        }     
 
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6419634028198889519}
   - component: {fileID: -8332123509383165699}
   - component: {fileID: 2503501873218643698}
-  - component: {fileID: 1827016918213137443}
+  - component: {fileID: 7532702065322214813}
   m_Layer: 12
   m_Name: Enemy 4
   m_TagString: Enemy
@@ -30,9 +30,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6419634028198889504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.77223873, y: -4.543598, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -78,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1884763614, guid: e76aaaf51e73ea94395b4f97ff84b9f2, type: 3}
-  m_Color: {r: 0.990566, g: 0.75226945, b: 0.75670916, a: 1}
+  m_Sprite: {fileID: -189946943, guid: 10c65ed5468c208418dd1636e09ed7b2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -122,17 +122,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa963f2f357db047ab19e8a5e55fe3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 3
-  speed: 8
+  _health: 4
+  speed: 5
   goScore: {fileID: 2418562503317077798, guid: 9d9e603ba1f25a544845bb344936c817, type: 3}
   _score: {fileID: 0}
   rotationEnemy: 1
   speedRotation: 200
   createPowerUp: 0
-  createCrystal: 1
+  createCrystal: 0
   createMedKit: 0
   createWeapon: 0
-  iAmAsteroid: 0
 --- !u!50 &-8332123509383165699
 Rigidbody2D:
   serializedVersion: 4
@@ -166,8 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc517e1b94acf24aa75118accacb525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &1827016918213137443
-BoxCollider2D:
+--- !u!58 &7532702065322214813
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -179,16 +178,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0032709837}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.08, y: 2.08}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 2.08, y: 2.0814946}
-  m_EdgeRadius: 0
+  m_Radius: 2.2

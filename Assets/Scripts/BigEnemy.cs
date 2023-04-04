@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 public class BigEnemy : MonoBehaviour
 {
@@ -16,12 +14,8 @@ public class BigEnemy : MonoBehaviour
     {
         _boundsCheck = GetComponent<BoundsCheck>();
         _rb = GetComponent<Rigidbody2D>();
-    }
-
-    private void Start()
-    {
         _score = goScore.GetComponent<Score>();
-        _halfHeight.y = _boundsCheck.camHeight - 10f;
+        _halfHeight.y = _halfHeight.y +15;
     }
 
     private void FixedUpdate()
@@ -66,10 +60,9 @@ public class BigEnemy : MonoBehaviour
     }
     public void DestroyEnemy()
     {
-        _score.UpdateScore(100);
-        GameObjectManager.GOM.TimeDethBigEnemy = Time.timeSinceLevelLoad + GameObjectManager.GOM.plusTimeForBigEnemy;       
-        GameObjectManager.GOM.CountPartBigEnemy = 0;
-        GameObjectManager.GOM.DestroyGO(gameObject);   
+        GameObjectManager.GOM.TimeDethBigEnemy = Time.timeSinceLevelLoad + GameObjectManager.GOM.plusTimeForBigEnemy;
+        GameObjectManager.GOM.CountPartBigEnemy = 0;        
+        GameObjectManager.GOM.DestroyGO(gameObject);
     }
 
 

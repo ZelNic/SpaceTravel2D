@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -4205204768154305908}
   - component: {fileID: 3724381098125145965}
   - component: {fileID: 199016456304990576}
+  - component: {fileID: -6402759175992548807}
   m_Layer: 17
   m_Name: PartBigEnemy
   m_TagString: PartBigEnemy
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6871975491935692990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 21}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 8
-  m_Sprite: {fileID: 48316458, guid: e76aaaf51e73ea94395b4f97ff84b9f2, type: 3}
+  m_Sprite: {fileID: -692541329, guid: 10c65ed5468c208418dd1636e09ed7b2, type: 3}
   m_Color: {r: 0.8018868, g: 0.17021184, b: 0.17021184, a: 1}
   m_FlipX: 0
   m_FlipY: 1
@@ -100,9 +101,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.013519049, y: 0}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.2976205
+  m_Radius: 2
 --- !u!114 &3724381098125145965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +122,11 @@ MonoBehaviour:
   goScore: {fileID: 2418562503317077798, guid: 9d9e603ba1f25a544845bb344936c817, type: 3}
   goBE: {fileID: 7805503782268883601, guid: 0fcbb8104d03d5e49a7b227f368c3e22, type: 3}
   _rotationEnemy: 1
+  _abilityToMove: 0
   _speedRotation: 40
+  _rb: {fileID: 0}
+  _boundsCheck: {fileID: 0}
+  _speed: 0
 --- !u!114 &199016456304990576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,3 +139,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc517e1b94acf24aa75118accacb525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6402759175992548807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6871975491935692990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa05251cd3d34a6428215189c34f9d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.5
+  keepOnScreen: 0
+  camWidth: 0
+  camHeight: 0
+  isOnScreen: 1
+  offRight: 0
+  offLeft: 0
+  offUp: 0
+  offDown: 0

@@ -15,6 +15,7 @@ TagManager:
   - Weapon
   - Crystal
   - Asteroid
+  - EnemyWithWeapon
   layers:
   - Default
   - TransparentFX
@@ -35,8 +36,8 @@ TagManager:
   - BigEnemy
   - partBigEnemy
   - Asteroid
-  - 
-  - 
+  - Post
+  - UIII
   - 
   - 
   - 

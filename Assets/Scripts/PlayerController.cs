@@ -148,6 +148,12 @@ public class PlayerController : MonoBehaviour
                 GameObjectManager.GOM.DestroyGO(other);
                 _score.UpdateScore(10);
                 break;
+            case "EnemyWithWeapon":
+                Health--;
+                _takingDamage.ChangeColorTakingDamage();
+                GameObjectManager.GOM.DestroyGO(other);
+                _score.UpdateScore(10);
+                break;
             case "PartBigEnemy":
                 Health--;
                 _takingDamage.ChangeColorTakingDamage();

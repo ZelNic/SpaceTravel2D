@@ -9,7 +9,7 @@ public class GameObjectManager : MonoBehaviour
     [SerializeField] private GameObject[] m_bigEnemy;
     [SerializeField] private GameObject[] m_arrayPowerUP;
     [SerializeField] private GameObject crystal;
-    [SerializeField] private GameObject medKit;    
+    [SerializeField] private GameObject medKit;
     [SerializeField] private BoundsCheck _boundsCheck;
 
     [Header("Set in Inspector")]
@@ -34,16 +34,16 @@ public class GameObjectManager : MonoBehaviour
     private int _countPartBigEnemy;
     private int _countAsteroid;
     private float _timeCreateAsteroid;
-    private int _countWeaponsPlayer;
+    //private int _countWeaponsPlayer;
 
 
     #region get set
 
-    public int CountWeaponsPlayer
+   /* public int CountWeaponsPlayer
     {
         get { return _countWeaponsPlayer; }
         set { _countWeaponsPlayer = value; }
-    }
+    }*/
 
 
 
@@ -130,19 +130,19 @@ public class GameObjectManager : MonoBehaviour
     public float TimeCreateAsteroid
     {
         get { return _timeCreateAsteroid; }
-        set 
-        { 
+        set
+        {
             _timeCreateAsteroid = value;
         }
     }
     public int CountAsteroid
     {
         get { return _countAsteroid; }
-        set 
+        set
         {
-            _countAsteroid = value; 
-            if( _countAsteroid < 0)
-            { _countAsteroid = 0;}
+            _countAsteroid = value;
+            if (_countAsteroid < 0)
+            { _countAsteroid = 0; }
         }
     }
 
@@ -176,7 +176,7 @@ public class GameObjectManager : MonoBehaviour
     }
 
     public void CreateWeapon(GameObject gameObject, Transform transform)
-    {        
+    {
         if (CountWeapon <= 1)
         {
             GameObject powerUpGO = Instantiate(m_arrayPowerUP[2]);
@@ -249,25 +249,27 @@ public class GameObjectManager : MonoBehaviour
             indInArray = Random.Range(0, m_bigEnemy.Length);
             _enemySpawner = Instantiate(m_bigEnemy[indInArray]);
             Transform posEnemy = _enemySpawner.GetComponent<Transform>();
-            posEnemy.transform.position = new Vector3(0, 25, 0);            
+            posEnemy.transform.position = new Vector3(0, 25, 0);
         }
         return;
     }
 
     public void DestroyGO(GameObject gameObject)
     {
-        Destroy(gameObject);
+        
         switch (gameObject.tag)
         {
-            case "Enemy": CountEnemy--; break;
-            case "BigEnemy": CountBigEnemy--; CountWeapon++; break;
+            case "Enemy": CountEnemy--;break;
+            case "BigEnemy": CountBigEnemy--; break;
             case "PartBigEnemy": CountPartBigEnemy++; break;
             case "PowerUp": CountPowerUp--; break;
             case "Crystal": CountCrystal--; break;
             case "HP": CountMedKit--; break;
             case "Weapon": CountWeapon--; break;
             case "Asteroid": CountAsteroid--; break;
-        }        
+            case "EnemyWithWeapon": CountEnemy--; break;            
+        }
+        Destroy(gameObject);
     }
-    
+
 }

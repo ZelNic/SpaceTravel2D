@@ -13,14 +13,32 @@ public class PartsBigEnemy : MonoBehaviour
     public GameObject goBE;
     private BigEnemy _be;
     [SerializeField] private bool _rotationEnemy;
+    [SerializeField] private bool _abilityToMove;
     [SerializeField] private float _speedRotation;
+    [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private BoundsCheck _boundsCheck;
+    [SerializeField] private float _speed;
     private bool iDestroyed = false;
+    private Vector2 _halfHeight;
+    private float _liveTime;
+
+
+
+
 
 
     private void Start()
     {
         _score = goScore.GetComponent<Score>();
         _takingDamage = GetComponent<TakingDamage>();
+
+        if (_abilityToMove == true)
+        {
+            _rb = GetComponent<Rigidbody2D>();
+            _boundsCheck = GetComponent<BoundsCheck>();
+            _halfHeight.y = _boundsCheck.camHeight - 13f;
+            _liveTime = Time.timeSinceLevelLoad + 15f;
+        }
     }
     public int health
     {
@@ -40,6 +58,8 @@ public class PartsBigEnemy : MonoBehaviour
     {
         CreateProjectile();
         Rotation();
+        IGetAbilityToMove();
+
     }
     public void CreateProjectile()
     {
@@ -61,8 +81,48 @@ public class PartsBigEnemy : MonoBehaviour
     {
         if (iDestroyed == false)
         {
-            iDestroyed = true;            
+            iDestroyed = true;
             GameObjectManager.GOM.DestroyGO(gameObject);
         }
+
+    }
+
+    public void IGetAbilityToMove()
+    {
+        if (_abilityToMove == true)
+        {
+
+            if (_rb.position.y > _halfHeight.y)
+            {
+                _rb.position -= new Vector2(0, _speed * Time.deltaTime);
+
+            }
+            if(_rb.position.y < _halfHeight.y)
+            {
+                _rb.position += new Vector2(_speed * Time.deltaTime, 0);
+                if (_boundsCheck.offRight)
+                {
+                    _speed = -Mathf.Abs(_speed);
+                }
+                if (_boundsCheck.offLeft)
+                {
+                    _speed = Mathf.Abs(_speed);
+                }
+                if (_liveTime < Time.timeSinceLevelLoad)
+                {                   
+                    if (_boundsCheck.offLeft)
+                    {
+                        GameObjectManager.GOM.DestroyGO(gameObject);
+                    }
+                }
+            }   
+            
+
+
+
+        }
+
+
     }
 }
+
