@@ -61,25 +61,26 @@ public class Score : MonoBehaviour
 
     }
 
-    public void Update()
+    public void FixedUpdate()
+    {
+        UpdateTextScore();
+    }
+       
+    private void UpdateTextScore()
     {
         textScore.text = "s: " + ScoreGS.ToString();
-        
+
         if (ScoreGS > HightScore)
         {
             HightScore = ScoreGS;
             PlayerPrefs.SetInt("hightScore", HightScore);
-            PlayerPrefs.Save();            
+            PlayerPrefs.Save();
         }
         textHighScore.text = HightScore.ToString();
-        textCountCrystal.text = Crystal.ToString();
-
-       /* if (Input.GetKeyDown(KeyCode.Space))
-        {
-            PlayerPrefs.DeleteAll();
-        }*/
+        //textCountCrystal.text = Crystal.ToString();
     }
-        
+
+
 
     public void UpdateScore(int value)
     {
@@ -90,12 +91,12 @@ public class Score : MonoBehaviour
         else ScoreGS += value;       
     }
 
-    public void UpdateCrystal(int value)
+   /* public void UpdateCrystal(int value)
     {
         Crystal += value;
         PlayerPrefs.SetInt("Crystal", Crystal);
         PlayerPrefs.Save();
-    }
+    }*/
 
 
 

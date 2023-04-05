@@ -5,8 +5,8 @@ public class ProjectileHero : MonoBehaviour
     [SerializeField] private float speed;
     private Rigidbody2D _rb;
     private BoundsCheck _boundsCheck;
-    [SerializeField] private GameObject goScore;
-    public Score _score;
+    [SerializeField] private GameObject _goScore;
+    [SerializeField] private Score _score;
 
     public void Awake()
     {
@@ -17,17 +17,23 @@ public class ProjectileHero : MonoBehaviour
 
     public void Start()
     {
-        _score = goScore.GetComponent<Score>();
+        _score = _goScore.GetComponent<Score>();
     }
 
     public void FixedUpdate()
     {
         GiveForceProjectile();
+        CheckBounds();
+    }
+
+    private void CheckBounds()
+    {
         if (_boundsCheck != null && _boundsCheck.offUp)
         {
             Destroy(gameObject);
         }
     }
+
 
     private void GiveForceProjectile()
     {

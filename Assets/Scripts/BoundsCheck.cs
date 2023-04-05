@@ -22,10 +22,14 @@ public class BoundsCheck : MonoBehaviour
     {
         camHeight = Camera.main.orthographicSize;
         camWidth = camHeight * Camera.main.aspect;
-
     }
 
     private void LateUpdate()
+    {
+        CheckBounds();
+    }
+
+    private void CheckBounds()
     {
         Vector3 pos = transform.position;
         isOnScreen = true;

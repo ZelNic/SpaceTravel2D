@@ -14,16 +14,20 @@ public class E_Fast : Enemy
         _boundsCheckE = GetComponent<BoundsCheck>();
         _startPos = _rbe.position;       
         _endPos = new Vector2(Random.Range(-_boundsCheckE.camWidth, _boundsCheckE.camWidth), -_boundsCheckE.camHeight + 3f);
-
     }
 
     private void FixedUpdate()
+    {
+        CheckBound();
+        MoveEnemy();
+    }
+
+    private void CheckBound()
     {
         if (_boundsCheckE.offLeft || _boundsCheckE.offDown || _boundsCheckE.offRight)
         {
             DestroyEnemy();
         }
-        MoveEnemy();
     }
 
     public override void MoveEnemy()

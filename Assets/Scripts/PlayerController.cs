@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public GameObject pointCreateProjectile;
     public GameObject pointCPLeft;
     public GameObject pointCPRight;
-    private int _countWepons;
+    //private int _countWepons;
 
 
     private Rigidbody2D _rb;
@@ -31,10 +31,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _rateOfFire;
     private float defultRateOfFire;
 
-
-    private Vector2 touchStartPosition;
-    private float movementSpeed = 2f;
-
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -44,8 +40,7 @@ public class PlayerController : MonoBehaviour
         _gm = gm.GetComponent<GameManager>();
         _currentHealth = _maxHealth;
         _rb.position = Vector2.zero;
-        defultRateOfFire = _rateOfFire;
-        _countWepons = 0;
+        defultRateOfFire = _rateOfFire;        
     }
 
     private void FixedUpdate()
@@ -54,10 +49,10 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
         CreateProjectileHero();
         BonusSpeedFire();
-        IGetUWeapons();
+        //IGetUWeapons();
     }
 
-    private void IGetUWeapons()
+    /*private void IGetUWeapons()
     {
         if (GameObjectManager.GOM.CountWeapon == 1)
         {
@@ -68,10 +63,10 @@ public class PlayerController : MonoBehaviour
             pointCPRight.SetActive(true);
         }
 
-    }
+    }*/
 
 
-    public int CountWepons
+    /*public int CountWepons
     {
         get { return _countWepons; }
         set
@@ -87,7 +82,7 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-    }
+    }*/
 
 
     public int Health
@@ -175,10 +170,10 @@ public class PlayerController : MonoBehaviour
                 activeSpeedModForFire = true;
                 GameObjectManager.GOM.DestroyGO(other);
                 break;
-            case "Crystal":
+            /*case "Crystal":
                 GameObjectManager.GOM.DestroyGO(other);
                 _score.UpdateCrystal(10);
-                break;
+                break;*/
             case "Asteroid":
                 Health--;
                 _takingDamage.ChangeColorTakingDamage();
